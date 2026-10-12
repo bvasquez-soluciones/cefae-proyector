@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEFAE Proyector — Descargar para Windows</title>
+  <meta name="description" content="Sistema de proyección para iglesias: Biblia, canciones, videos, imágenes y anuncios en tu televisor o proyector." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root {
+      --bg: #060a14; --card: rgba(15, 24, 46, .72); --border: rgba(130, 190, 255, .18);
+      --text-1: #eaf4ff; --text-2: #b4c6dc; --text-3: #7f97b6;
+      --accent: #3ec5ff; --gold: #ffe14a; --ok: #34e3b0;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh; color: var(--text-2); line-height: 1.65;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 520px at 12% -8%, rgba(41, 182, 246, .2), transparent 62%),
+                  radial-gradient(820px 620px at 105% 12%, rgba(122, 92, 255, .16), transparent 60%), var(--bg);
+    }
+    .envoltura { width: min(960px, 100%); margin: 0 auto; padding: 0 20px 60px; }
+    header.hero { text-align: center; padding: 56px 0 34px; }
+    .logo { width: min(210px, 56%); height: auto; filter: drop-shadow(0 0 28px rgba(62, 197, 255, .35)); }
+    h1 { margin-top: 18px; font-size: clamp(30px, 6vw, 46px); line-height: 1.15; color: var(--text-1); letter-spacing: -.01em; }
+    .lema { max-width: 640px; margin: 14px auto 0; font-size: clamp(16px, 2.6vw, 19px); }
+    .descarga { margin: 30px auto 0; }
+    a.boton {
+      display: inline-flex; align-items: center; gap: 12px; padding: 18px 38px; border-radius: 16px; text-decoration: none;
+      font-size: 20px; font-weight: 700; color: #04121f;
+      background: linear-gradient(135deg, var(--gold), #ffb938); box-shadow: 0 12px 38px rgba(255, 200, 60, .28);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    a.boton:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(255, 200, 60, .38); }
+    a.boton svg { width: 24px; height: 24px; }
+    .datos { margin-top: 12px; font-size: 14px; color: var(--text-3); }
+    .gratis { display: inline-block; margin-top: 18px; padding: 6px 16px; border-radius: 999px; font-size: 14px; font-weight: 600;
+              color: var(--ok); border: 1px solid rgba(52, 227, 176, .4); background: rgba(52, 227, 176, .08); }
+    .aviso {
+      margin: 26px auto 0; max-width: 640px; padding: 14px 18px; border-radius: 14px; text-align: left; font-size: 14.5px;
+      color: #ffe3a6; background: rgba(255, 190, 70, .08); border: 1px solid rgba(255, 190, 70, .35);
+    }
+    .aviso b { color: #fff1cf; }
+    .precio { max-width: 640px; margin: 0 auto; padding: 28px 30px; border-radius: 20px; text-align: center;
+              border: 1px solid rgba(255, 225, 74, .35); background: var(--card); box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
+    .precio .monto { font-size: clamp(26px, 5vw, 36px); font-weight: 800; color: var(--gold); line-height: 1.2; }
+    .precio ul { list-style: none; padding: 0; margin: 18px auto 22px; display: inline-block; text-align: left; }
+    .precio li { margin: 7px 0; font-size: 15px; }
+    .precio li::before { content: "✓"; color: var(--ok); font-weight: 700; margin-right: 10px; }
+    .precio .botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    a.boton.chico { padding: 14px 28px; font-size: 17px; }
+    a.boton.claro { color: var(--text-1); background: transparent; border: 1px solid var(--border); box-shadow: none; }
+    a.boton.claro:hover { border-color: var(--accent); box-shadow: none; }
+    .preguntas details { margin: 10px 0; padding: 14px 20px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); }
+    .preguntas summary { cursor: pointer; font-weight: 600; color: var(--text-1); }
+    .preguntas p { margin-top: 8px; font-size: 14.5px; }
+    h2 { margin: 52px 0 16px; font-size: 24px; color: var(--text-1); text-align: center; }
+    .cuadricula { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+    .tarjeta { padding: 20px 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
+    .tarjeta h3 { font-size: 16.5px; color: var(--text-1); margin-bottom: 6px; }
+    .tarjeta h3 span { color: var(--accent); margin-right: 6px; }
+    .tarjeta p { font-size: 14.5px; }
+    ol.pasos { list-style: none; counter-reset: p; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; padding: 0; }
+    ol.pasos li { counter-increment: p; padding: 20px 22px 20px 62px; position: relative; border-radius: 16px;
+                  border: 1px solid var(--border); background: var(--card); font-size: 14.5px; }
+    ol.pasos li::before { content: counter(p); position: absolute; left: 20px; top: 18px; width: 30px; height: 30px; border-radius: 50%;
+                          display: flex; align-items: center; justify-content: center; font-weight: 700; color: #04121f; background: var(--accent); }
+    ol.pasos b { color: var(--text-1); }
+    .requisitos { max-width: 640px; margin: 0 auto; padding: 18px 26px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
+    .requisitos li { margin: 6px 0 6px 18px; font-size: 14.5px; }
+    .contacto { margin-top: 18px; text-align: center; font-size: 15px; }
+    .contacto b { color: var(--text-1); }
+    .verificar { margin: 34px auto 0; max-width: 760px; font-size: 12.5px; color: var(--text-3); text-align: center; word-break: break-all; }
+    .verificar code { color: var(--text-2); }
+    footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--text-3); }
+  </style>
+</head>
+<body>
+  <div class="envoltura">
+    <header class="hero">
+      <img class="logo" src="logo.png" alt="Logo" />
+      <h1>CEFAE Proyector</h1>
+      <p class="lema">El sistema de proyección para tu iglesia: Biblia, canciones, videos, imágenes y anuncios en tu televisor o videobeam.</p>
+
+      <div class="descarga">
+        <a class="boton" href="https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          Descargar para Windows
+        </a>
+        <div class="datos">Versión 1.0.0 · 114 MB · Windows 10 y 11 (64 bits) · 12 de octubre de 2026</div>
+        <span class="gratis">Pruébalo gratis 30 días, sin tarjeta</span>
+        <div class="datos"><a href="#precio" style="color: var(--accent)">Ver precio y licencia</a></div>
+      </div>
+      <div class="aviso"><b>Si Windows muestra «Windows protegió su PC»:</b> pulsa <b>«Más información»</b> y luego <b>«Ejecutar de todos modos»</b>. Es normal con programas nuevos; el instalador es el original de este sitio.</div>
+
+    </header>
+
+    <h2>Todo lo que incluye</h2>
+    <div class="cuadricula">
+      <div class="tarjeta"><h3><span>📖</span>Biblia</h3><p>Dos versiones incluidas (RVR60 y NTV). Busca por libro y capítulo, o escribe una frase y la encuentra.</p></div>
+      <div class="tarjeta"><h3><span>🎵</span>Canciones</h3><p>70 canciones incluidas. Agrega las tuyas, busca letras en internet y proyéctalas estrofa por estrofa.</p></div>
+      <div class="tarjeta"><h3><span>▶️</span>YouTube con letra</h3><p>Busca una canción por su nombre y la letra se proyecta sola, al ritmo de la música.</p></div>
+      <div class="tarjeta"><h3><span>🎬</span>Videos e imágenes</h3><p>Sube tus videos y carteles, o pega un enlace de YouTube, y proyéctalos a pantalla completa.</p></div>
+      <div class="tarjeta"><h3><span>🎨</span>Fondos</h3><p>Más de 20 videos de fondo en movimiento y colores, listos para usar detrás del texto.</p></div>
+      <div class="tarjeta"><h3><span>📢</span>Anuncios</h3><p>Avisos que se muestran sobre cualquier pantalla, con tu estilo.</p></div>
+      <div class="tarjeta"><h3><span>🖥️</span>Cualquier pantalla</h3><p>Televisores, videobeams y pantallas LED de cualquier forma. Con dos pantallas, el visor sale directo en la otra.</p></div>
+      <div class="tarjeta"><h3><span>⛪</span>Con tu iglesia</h3><p>Pon tu logo y el nombre de tu iglesia. Tus datos quedan solo en tu equipo.</p></div>
+    </div>
+
+    <h2 id="precio">Precio y licencia</h2>
+    <div class="precio">
+      <div class="monto">COP 149.000 por iglesia (precio de lanzamiento)</div>
+      <div><ul>
+        <li>Una licencia para tu iglesia, con todas las funciones incluidas</li>
+        <li>Pruébalo 30 días gratis antes de pagar, sin tarjeta</li>
+        <li>Recibes tu clave y la ingresas en «Ajustes»: se activa sin internet</li>
+        <li>Tus canciones, anuncios y ajustes se conservan al activar</li>
+      </ul></div>
+      <div class="botones">
+        <a class="boton chico" href="https://wa.me/573225926739?text=Hola%2C%20quiero%20comprar%20la%20licencia%20de%20CEFAE%20Proyector" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+      </div>
+    </div>
+
+    <h2>Cómo empezar</h2>
+    <ol class="pasos">
+      <li><b>Descarga</b> el instalador con el botón de arriba.</li>
+      <li><b>Ábrelo</b> y sigue los pasos. Se instala solo para tu usuario y crea el icono en el escritorio.</li>
+      <li><b>Úsalo 30 días gratis.</b> Después, ingresa tu clave de licencia en «Ajustes».</li>
+    </ol>
+    <p class="contacto">¿Quieres tu clave de licencia? Escríbenos: <b>WhatsApp +57 322 592 6739</b></p>
+
+    <h2>Requisitos</h2>
+    <div class="requisitos">
+      <ul>
+        <li>Windows 10 u 11 de 64 bits.</li>
+        <li>4 GB de memoria y 1 GB libre en el disco.</li>
+        <li>Navegador Google Chrome o Microsoft Edge (se usa para ver el panel y el visor).</li>
+        <li>Internet solo para las funciones en línea (YouTube, letras, IA). La Biblia, las canciones y los fondos funcionan sin internet.</li>
+      </ul>
+    </div>
+
+    <h2>Preguntas frecuentes</h2>
+    <div class="preguntas">
+      <details><summary>¿Qué pasa cuando termina la prueba?</summary>
+        <p>El programa te pide la clave de licencia para seguir. Todo lo que ya tenías (canciones, anuncios, logo y ajustes) se queda donde está.</p></details>
+      <details><summary>¿Cómo recibo la clave?</summary>
+        <p>Después de tu pago te enviamos tu clave. La pegas en «Ajustes» y el programa queda activado, sin necesidad de internet.</p></details>
+      <details><summary>¿Necesito internet para usarlo en el culto?</summary>
+        <p>No. La Biblia, las canciones y los fondos funcionan sin internet. Solo lo necesitan YouTube con letra, la búsqueda de letras y la sincronización con IA.</p></details>
+      <details><summary>¿Puedo controlarlo desde el celular?</summary>
+        <p>Sí. Escaneas un código QR con el teléfono (en la misma red Wi-Fi) y desde ahí cambias versículos, canciones y videos.</p></details>
+      <details><summary>Windows dice «protegió su PC» al instalar</summary>
+        <p>Es normal con programas nuevos. Pulsa «Más información» y luego «Ejecutar de todos modos». El instalador es el original de este sitio y puedes comprobarlo con la huella SHA-256 que aparece abajo.</p></details>
+    </div>
+
+    <p class="verificar">Para verificar que el archivo no se dañó, su huella SHA-256 es:<br /><code>5CC0A6C35D02A3522BA4B4B052440319205CBFE9A6FE2349D37433C992C4D8D3</code></p>
+
+    <footer>CEFAE Proyector · Hecho por Ing. Bayron Vásquez<br />© 2026 Ing. Bayron Vásquez. Todos los derechos reservados.<br />Las versiones de la Biblia incluidas (Reina Valera 1960 y NTV) pertenecen a sus titulares de derechos de autor; el autor de este programa no tiene derechos sobre ellas.<br />Al instalarlo aceptas los términos de uso que se muestran en el instalador.<br /><a href="privacidad.html" style="color: inherit">Política de privacidad</a></footer>
+  </div>
+</body>
+</html>
