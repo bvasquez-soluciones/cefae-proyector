@@ -3,104 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CEFAE Proyector — Descargar para Windows</title>
-  <meta name="description" content="Sistema de proyección para iglesias: Biblia, canciones, videos, imágenes y anuncios en tu televisor o proyector." />
+  <title>CEFAE Proyector — Proyección para iglesias en Windows</title>
+  <meta name="description" content="Proyecta la Biblia, canciones con letra, videos y anuncios en tu iglesia, y contrólalo desde el celular. Pruébalo gratis 30 días." />
+  <meta property="og:title" content="CEFAE Proyector — Proyección para iglesias" />
+  <meta property="og:description" content="Biblia, canciones con letra, videos y anuncios en tu televisor o videobeam. Control desde el celular. Pruébalo gratis 30 días." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#060a14" />
   <link rel="icon" href="logo.png" />
   <style>
     :root {
-      --bg: #060a14; --card: rgba(15, 24, 46, .72); --border: rgba(130, 190, 255, .18);
-      --text-1: #eaf4ff; --text-2: #b4c6dc; --text-3: #7f97b6;
-      --accent: #3ec5ff; --gold: #ffe14a; --ok: #34e3b0;
+      --bg: #060a14; --bg2: #0a1224; --card: rgba(15, 24, 46, .72); --border: rgba(130, 190, 255, .16);
+      --text-1: #f0f7ff; --text-2: #b9cbe0; --text-3: #7f97b6;
+      --accent: #3ec5ff; --gold: #ffe14a; --gold2: #ffb938; --ok: #34e3b0;
     }
     * { box-sizing: border-box; margin: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     body {
-      min-height: 100vh; color: var(--text-2); line-height: 1.65;
+      color: var(--text-2); line-height: 1.65; overflow-x: hidden;
       font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 520px at 12% -8%, rgba(41, 182, 246, .2), transparent 62%),
-                  radial-gradient(820px 620px at 105% 12%, rgba(122, 92, 255, .16), transparent 60%), var(--bg);
+      background: radial-gradient(1000px 560px at 8% -6%, rgba(41, 182, 246, .22), transparent 62%),
+                  radial-gradient(900px 640px at 108% 4%, rgba(122, 92, 255, .18), transparent 60%), var(--bg);
     }
-    .envoltura { width: min(960px, 100%); margin: 0 auto; padding: 0 20px 60px; }
-    header.hero { text-align: center; padding: 56px 0 34px; }
-    .logo { width: min(210px, 56%); height: auto; filter: drop-shadow(0 0 28px rgba(62, 197, 255, .35)); }
-    h1 { margin-top: 18px; font-size: clamp(30px, 6vw, 46px); line-height: 1.15; color: var(--text-1); letter-spacing: -.01em; }
-    .lema { max-width: 640px; margin: 14px auto 0; font-size: clamp(16px, 2.6vw, 19px); }
-    .descarga { margin: 30px auto 0; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); }
+    .envoltura { width: min(1120px, 100%); margin: 0 auto; padding: 0 22px; }
+
+    /* barra superior fija */
+    .barra { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(6, 10, 20, .78);
+             border-bottom: 1px solid var(--border); }
+    .barra .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+    .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-1); font-weight: 700; }
+    .marca img { width: 38px; height: 38px; object-fit: contain; }
+    .barra nav { display: flex; align-items: center; gap: 22px; }
+    .barra nav a.enlace { color: var(--text-2); text-decoration: none; font-size: 15px; }
+    .barra nav a.enlace:hover { color: var(--text-1); }
+
+    /* botones */
     a.boton {
-      display: inline-flex; align-items: center; gap: 12px; padding: 18px 38px; border-radius: 16px; text-decoration: none;
-      font-size: 20px; font-weight: 700; color: #04121f;
-      background: linear-gradient(135deg, var(--gold), #ffb938); box-shadow: 0 12px 38px rgba(255, 200, 60, .28);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; border-radius: 14px;
+      text-decoration: none; font-size: 18px; font-weight: 700; color: #04121f;
+      background: linear-gradient(135deg, var(--gold), var(--gold2)); box-shadow: 0 10px 34px rgba(255, 200, 60, .28);
       transition: transform .15s ease, box-shadow .15s ease;
     }
-    a.boton:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(255, 200, 60, .38); }
-    a.boton svg { width: 24px; height: 24px; }
-    .datos { margin-top: 12px; font-size: 14px; color: var(--text-3); }
-    .gratis { display: inline-block; margin-top: 18px; padding: 6px 16px; border-radius: 999px; font-size: 14px; font-weight: 600;
-              color: var(--ok); border: 1px solid rgba(52, 227, 176, .4); background: rgba(52, 227, 176, .08); }
-    .aviso {
-      margin: 26px auto 0; max-width: 640px; padding: 14px 18px; border-radius: 14px; text-align: left; font-size: 14.5px;
-      color: #ffe3a6; background: rgba(255, 190, 70, .08); border: 1px solid rgba(255, 190, 70, .35);
-    }
-    .aviso b { color: #fff1cf; }
-    .precio { max-width: 640px; margin: 0 auto; padding: 28px 30px; border-radius: 20px; text-align: center;
-              border: 1px solid rgba(255, 225, 74, .35); background: var(--card); box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
-    .precio .monto { font-size: clamp(26px, 5vw, 36px); font-weight: 800; color: var(--gold); line-height: 1.2; }
-    .precio ul { list-style: none; padding: 0; margin: 18px auto 22px; display: inline-block; text-align: left; }
-    .precio li { margin: 7px 0; font-size: 15px; }
-    .precio li::before { content: "✓"; color: var(--ok); font-weight: 700; margin-right: 10px; }
-    .precio .botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    a.boton.chico { padding: 14px 28px; font-size: 17px; }
+    a.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 42px rgba(255, 200, 60, .4); }
+    a.boton svg { width: 22px; height: 22px; }
+    a.boton.chico { padding: 10px 20px; font-size: 15px; border-radius: 11px; box-shadow: none; }
     a.boton.claro { color: var(--text-1); background: transparent; border: 1px solid var(--border); box-shadow: none; }
     a.boton.claro:hover { border-color: var(--accent); box-shadow: none; }
-    .preguntas details { margin: 10px 0; padding: 14px 20px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); }
-    .preguntas summary { cursor: pointer; font-weight: 600; color: var(--text-1); }
-    .preguntas p { margin-top: 8px; font-size: 14.5px; }
-    h2 { margin: 52px 0 16px; font-size: 24px; color: var(--text-1); text-align: center; }
-    .cuadricula { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
-    .tarjeta { padding: 20px 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
-    .tarjeta h3 { font-size: 16.5px; color: var(--text-1); margin-bottom: 6px; }
-    .tarjeta h3 span { color: var(--accent); margin-right: 6px; }
+
+    /* portada */
+    .portada { padding: 56px 0 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
+    .etiqueta { display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--gold);
+                border: 1px solid rgba(255, 225, 74, .35); background: rgba(255, 225, 74, .07); }
+    h1 { margin-top: 18px; font-size: clamp(34px, 5.4vw, 56px); line-height: 1.08; color: var(--text-1); letter-spacing: -.02em; }
+    h1 em { font-style: normal; background: linear-gradient(120deg, var(--accent), #8f7bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lema { margin-top: 18px; max-width: 540px; font-size: clamp(16px, 2.2vw, 19px); }
+    .acciones { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .datos { margin-top: 12px; font-size: 13.5px; color: var(--text-3); }
+    .confianza { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; list-style: none; }
+    .confianza li { font-size: 14px; color: var(--text-2); }
+    .confianza li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 8px; }
+    .aviso {
+      margin: 20px 0 0; max-width: 560px; padding: 12px 16px; border-radius: 12px; font-size: 13.5px;
+      color: #ffe3a6; background: rgba(255, 190, 70, .08); border: 1px solid rgba(255, 190, 70, .32);
+    }
+    .aviso b { color: #fff1cf; }
+
+    /* pantalla del visor + panel */
+    .escena { position: relative; padding-bottom: 96px; }
+    .tele { border-radius: 14px; overflow: hidden; border: 6px solid #141c30; box-shadow: 0 30px 70px rgba(0, 0, 0, .55), 0 0 60px rgba(62, 197, 255, .15); background: #000; }
+    .tele img { width: 100%; }
+    .flota { position: absolute; right: -10px; bottom: 0; width: 50%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
+             box-shadow: 0 20px 50px rgba(0, 0, 0, .6); }
+    .pie-tele { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--text-3); }
+
+    /* cifras */
+    .cifras { margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .cifra { padding: 18px 12px; text-align: center; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
+    .cifra b { display: block; font-size: 26px; color: var(--gold); line-height: 1.2; }
+    .cifra span { font-size: 13.5px; color: var(--text-2); }
+
+    h2 { margin: 74px 0 14px; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; color: var(--text-1); text-align: center; letter-spacing: -.01em; }
+    .sub { max-width: 640px; margin: 0 auto 30px; text-align: center; font-size: 16.5px; }
+
+    /* bloques con imagen */
+    .bloque { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center; margin: 40px 0; }
+    .bloque.invertido { grid-template-columns: 1.1fr 1fr; }
+    .bloque.invertido .texto { order: 2; }
+    .bloque h3 { font-size: clamp(22px, 3vw, 28px); color: var(--text-1); line-height: 1.2; margin-bottom: 12px; }
+    .bloque ul { list-style: none; padding: 0; margin-top: 14px; }
+    .bloque li { margin: 8px 0; font-size: 15.5px; }
+    .bloque li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 10px; }
+    .ventana { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
+    .telefono { width: min(270px, 70%); margin: 0 auto; border-radius: 34px; padding: 9px; background: #121a2e; border: 1px solid var(--border);
+                box-shadow: 0 28px 60px rgba(0, 0, 0, .55), 0 0 50px rgba(122, 92, 255, .18); }
+    .telefono img { border-radius: 26px; }
+
+    /* funciones */
+    .cuadricula { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+    .tarjeta { padding: 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); transition: transform .15s ease, border-color .15s ease; }
+    .tarjeta:hover { transform: translateY(-3px); border-color: rgba(62, 197, 255, .45); }
+    .tarjeta h3 { font-size: 17px; color: var(--text-1); margin-bottom: 6px; }
+    .tarjeta h3 span { margin-right: 8px; }
     .tarjeta p { font-size: 14.5px; }
+
+    /* pasos */
     ol.pasos { list-style: none; counter-reset: p; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; padding: 0; }
-    ol.pasos li { counter-increment: p; padding: 20px 22px 20px 62px; position: relative; border-radius: 16px;
-                  border: 1px solid var(--border); background: var(--card); font-size: 14.5px; }
-    ol.pasos li::before { content: counter(p); position: absolute; left: 20px; top: 18px; width: 30px; height: 30px; border-radius: 50%;
-                          display: flex; align-items: center; justify-content: center; font-weight: 700; color: #04121f; background: var(--accent); }
+    ol.pasos li { counter-increment: p; padding: 22px 22px 22px 66px; position: relative; border-radius: 16px;
+                  border: 1px solid var(--border); background: var(--card); font-size: 15px; }
+    ol.pasos li::before { content: counter(p); position: absolute; left: 20px; top: 20px; width: 34px; height: 34px; border-radius: 50%;
+                          display: flex; align-items: center; justify-content: center; font-weight: 800; color: #04121f; background: var(--accent); }
     ol.pasos b { color: var(--text-1); }
-    .requisitos { max-width: 640px; margin: 0 auto; padding: 18px 26px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
+
+    /* precio */
+    .precio { max-width: 660px; margin: 0 auto; padding: 36px 32px; border-radius: 24px; text-align: center; position: relative;
+              border: 1px solid rgba(255, 225, 74, .4); background: linear-gradient(180deg, rgba(255, 225, 74, .07), var(--card));
+              box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+    .precio .insignia { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 4px 16px;
+                        border-radius: 999px; font-size: 12.5px; font-weight: 700; color: #04121f; background: var(--gold); white-space: nowrap; }
+    .precio .monto { font-size: clamp(26px, 5vw, 38px); font-weight: 800; color: var(--gold); line-height: 1.2; }
+    .precio ul { list-style: none; padding: 0; margin: 20px auto 24px; display: inline-block; text-align: left; }
+    .precio li { margin: 8px 0; font-size: 15.5px; }
+    .precio li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 10px; }
+    .precio .botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .precio .contacto { font-size: 15px; }
+    .precio .datos { text-align: center; }
+
+    /* autor */
+    .autor { max-width: 720px; margin: 0 auto; padding: 24px 28px; border-radius: 18px; border: 1px solid var(--border); background: var(--card); text-align: center; }
+    .autor b { color: var(--text-1); }
+
+    .preguntas { max-width: 780px; margin: 0 auto; }
+    .preguntas details { margin: 10px 0; padding: 16px 22px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); }
+    .preguntas summary { cursor: pointer; font-weight: 600; color: var(--text-1); }
+    .preguntas p { margin-top: 8px; font-size: 15px; }
+    .requisitos { max-width: 660px; margin: 0 auto; padding: 18px 26px; border-radius: 16px; border: 1px solid var(--border); background: var(--card); }
     .requisitos li { margin: 6px 0 6px 18px; font-size: 14.5px; }
     .contacto { margin-top: 18px; text-align: center; font-size: 15px; }
     .contacto b { color: var(--text-1); }
-    .verificar { margin: 34px auto 0; max-width: 760px; font-size: 12.5px; color: var(--text-3); text-align: center; word-break: break-all; }
+    .verificar { margin: 38px auto 0; max-width: 760px; font-size: 12.5px; color: var(--text-3); text-align: center; word-break: break-all; }
     .verificar code { color: var(--text-2); }
-    footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--text-3); }
+    footer { margin-top: 44px; padding: 20px 0 90px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--text-3); }
+
+    /* botón flotante de WhatsApp */
+    .wa { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px;
+          border-radius: 999px; background: #25d366; color: #04210f; font-weight: 700; font-size: 15px; text-decoration: none;
+          box-shadow: 0 10px 30px rgba(37, 211, 102, .4); }
+    .wa svg { width: 26px; height: 26px; fill: currentColor; }
+
+    @media (max-width: 860px) {
+      .portada { grid-template-columns: 1fr; padding-top: 34px; gap: 30px; }
+      .bloque, .bloque.invertido { grid-template-columns: 1fr; gap: 24px; }
+      .bloque.invertido .texto { order: 0; }
+      .barra nav a.enlace { display: none; }
+      .flota { right: 0; width: 52%; }
+      .wa span { display: none; }
+      .wa { padding: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <div class="envoltura">
-    <header class="hero">
-      <img class="logo" src="logo.png" alt="Logo" />
-      <h1>CEFAE Proyector</h1>
-      <p class="lema">El sistema de proyección para tu iglesia: Biblia, canciones, videos, imágenes y anuncios en tu televisor o videobeam.</p>
+  <header class="barra">
+    <div class="envoltura">
+      <a class="marca" href="#"><img src="logo.png" alt="" />CEFAE Proyector</a>
+      <nav>
+        <a class="enlace" href="#funciones">Funciones</a>
+        <a class="enlace" href="#como-se-ve">Cómo se ve</a>
+        <a class="enlace" href="#precio">Precio</a>
+        <a class="enlace" href="#preguntas">Preguntas</a>
+        <a class="boton chico" href="https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>Descargar gratis</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="descarga">
-        <a class="boton" href="https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
-          Descargar para Windows
-        </a>
+  <div class="envoltura">
+    <section class="portada">
+      <div>
+        <span class="etiqueta">Hecho para iglesias de habla hispana</span>
+        <h1>Proyecta tu culto <em>sin complicaciones</em></h1>
+        <p class="lema">Biblia, canciones con su letra, videos, imágenes y anuncios en tu televisor o videobeam. Y lo controlas desde el celular, sin salir de tu lugar.</p>
+        <div class="acciones">
+          <a class="boton" href="https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+            Descargar para Windows
+          </a>
+          <a class="boton claro" href="#precio">Ver precio</a>
+        </div>
         <div class="datos">Versión 1.0.0 · 114 MB · Windows 10 y 11 (64 bits) · 12 de octubre de 2026</div>
-        <span class="gratis">Pruébalo gratis 30 días, sin tarjeta</span>
-        <div class="datos"><a href="#precio" style="color: var(--accent)">Ver precio y licencia</a></div>
-      </div>
+        <ul class="confianza">
+          <li>Gratis 30 días, sin tarjeta</li>
+          <li>Funciona sin internet</li>
+          <li>Tus datos quedan en tu equipo</li>
+        </ul>
       <div class="aviso"><b>Si Windows muestra «Windows protegió su PC»:</b> pulsa <b>«Más información»</b> y luego <b>«Ejecutar de todos modos»</b>. Es normal con programas nuevos; el instalador es el original de este sitio.</div>
 
-    </header>
+      </div>
+      <div class="escena">
+        <div class="tele"><img src="img/visor.jpg" width="1920" height="1080" alt="Versículo proyectado a pantalla completa sobre un fondo animado" /></div>
+        <div class="flota"><img src="img/panel.jpg" width="1440" height="810" alt="Panel de control con la Biblia" loading="lazy" /></div>
+      </div>
+    </section>
 
-    <h2>Todo lo que incluye</h2>
+    <div class="cifras">
+      <div class="cifra"><b>70</b><span>canciones incluidas</span></div>
+      <div class="cifra"><b>2</b><span>versiones de la Biblia</span></div>
+      <div class="cifra"><b>20+</b><span>fondos en movimiento</span></div>
+      <div class="cifra"><b>Auto</b><span>letra de YouTube sincronizada</span></div>
+      <div class="cifra"><b>QR</b><span>control desde tu celular</span></div>
+    </div>
+
+    <h2 id="como-se-ve">Así se ve por dentro</h2>
+    <p class="sub">Un panel claro para el equipo de multimedia, y una pantalla limpia para la congregación.</p>
+
+    <div class="bloque">
+      <div class="texto">
+        <h3>Todo el culto en un solo panel</h3>
+        <p>Cambia de la Biblia a una canción, un video o un anuncio sin abrir otros programas. Lo que ves en la vista previa es lo que aparece en la pantalla.</p>
+        <ul>
+          <li>Busca por libro y capítulo, o escribe una frase y la encuentra</li>
+          <li>Texto que se agranda solo para llenar la pantalla</li>
+          <li>Fondos animados, brillo y márgenes para cualquier televisor</li>
+        </ul>
+      </div>
+      <div class="ventana"><img src="img/panel.jpg" width="1440" height="810" alt="Panel de control de CEFAE Proyector con la Biblia abierta" loading="lazy" /></div>
+    </div>
+
+    <div class="bloque invertido">
+      <div class="telefono"><img src="img/celular.jpg" width="390" height="844" alt="Control remoto en un celular: anterior, siguiente, limpiar pantalla y brillo" loading="lazy" /></div>
+      <div class="texto">
+        <h3>Contrólalo desde tu celular</h3>
+        <p>Escanea un código QR y listo: avanza versículos y estrofas, pon una canción, un anuncio o un video de YouTube desde donde estés en el templo.</p>
+        <ul>
+          <li>Protegido con un PIN de 6 dígitos</li>
+          <li>Funciona por tu Wi-Fi, sin instalar nada en el teléfono</li>
+          <li>Busca canciones de YouTube y proyecta su letra al ritmo de la música</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="funciones">Todo lo que incluye</h2>
     <div class="cuadricula">
       <div class="tarjeta"><h3><span>📖</span>Biblia</h3><p>Dos versiones incluidas (RVR60 y NTV). Busca por libro y capítulo, o escribe una frase y la encuentra.</p></div>
       <div class="tarjeta"><h3><span>🎵</span>Canciones</h3><p>70 canciones incluidas. Agrega las tuyas, busca letras en internet y proyéctalas estrofa por estrofa.</p></div>
-      <div class="tarjeta"><h3><span>▶️</span>YouTube con letra</h3><p>Busca una canción por su nombre y la letra se proyecta sola, al ritmo de la música.</p></div>
+      <div class="tarjeta"><h3><span>▶️</span>YouTube con letra</h3><p>Busca una canción por su nombre y la letra se proyecta sola, al ritmo de la música. Si no existe, la IA la sincroniza.</p></div>
       <div class="tarjeta"><h3><span>🎬</span>Videos e imágenes</h3><p>Sube tus videos y carteles, o pega un enlace de YouTube, y proyéctalos a pantalla completa.</p></div>
       <div class="tarjeta"><h3><span>🎨</span>Fondos</h3><p>Más de 20 videos de fondo en movimiento y colores, listos para usar detrás del texto.</p></div>
       <div class="tarjeta"><h3><span>📢</span>Anuncios</h3><p>Avisos que se muestran sobre cualquier pantalla, con tu estilo.</p></div>
@@ -108,9 +254,17 @@
       <div class="tarjeta"><h3><span>⛪</span>Con tu iglesia</h3><p>Pon tu logo y el nombre de tu iglesia. Tus datos quedan solo en tu equipo.</p></div>
     </div>
 
+    <h2>Empieza en 3 pasos</h2>
+    <ol class="pasos">
+      <li><b>Descarga</b> el instalador con el botón de arriba.</li>
+      <li><b>Ábrelo</b> y sigue los pasos. Se instala solo para tu usuario y crea el icono en el escritorio.</li>
+      <li><b>Úsalo 30 días gratis.</b> Después, ingresa tu clave de licencia en «Ajustes».</li>
+    </ol>
+
     <h2 id="precio">Precio y licencia</h2>
     <div class="precio">
-      <div class="monto">COP 149.000 por iglesia (precio de lanzamiento)</div>
+      <div class="insignia">Precio de lanzamiento</div>
+      <div class="monto">COP 149.000 por iglesia</div>
       <div><ul>
         <li>Una licencia para tu iglesia, con todas las funciones incluidas</li>
         <li>Pruébalo 30 días gratis antes de pagar, sin tarjeta</li>
@@ -121,26 +275,14 @@
         <a class="boton chico" href="https://wa.me/573225926739?text=Hola%2C%20quiero%20comprar%20la%20licencia%20de%20CEFAE%20Proyector" target="_blank" rel="noopener">Comprar por WhatsApp</a>
       </div>
     </div>
-
-    <h2>Cómo empezar</h2>
-    <ol class="pasos">
-      <li><b>Descarga</b> el instalador con el botón de arriba.</li>
-      <li><b>Ábrelo</b> y sigue los pasos. Se instala solo para tu usuario y crea el icono en el escritorio.</li>
-      <li><b>Úsalo 30 días gratis.</b> Después, ingresa tu clave de licencia en «Ajustes».</li>
-    </ol>
     <p class="contacto">¿Quieres tu clave de licencia? Escríbenos: <b>WhatsApp +57 322 592 6739</b></p>
 
-    <h2>Requisitos</h2>
-    <div class="requisitos">
-      <ul>
-        <li>Windows 10 u 11 de 64 bits.</li>
-        <li>4 GB de memoria y 1 GB libre en el disco.</li>
-        <li>Navegador Google Chrome o Microsoft Edge (se usa para ver el panel y el visor).</li>
-        <li>Internet solo para las funciones en línea (YouTube, letras, IA). La Biblia, las canciones y los fondos funcionan sin internet.</li>
-      </ul>
+    <h2>Quién lo hace</h2>
+    <div class="autor">
+      <p><b>CEFAE Proyector</b> lo desarrolla y lo atiende directamente su autor. Hecho por Ing. Bayron Vásquez. Si tienes una duda antes de comprar o algo no te funciona, escribes y te responde una persona.</p>
     </div>
 
-    <h2>Preguntas frecuentes</h2>
+    <h2 id="preguntas">Preguntas frecuentes</h2>
     <div class="preguntas">
       <details><summary>¿Qué pasa cuando termina la prueba?</summary>
         <p>El programa te pide la clave de licencia para seguir. Todo lo que ya tenías (canciones, anuncios, logo y ajustes) se queda donde está.</p></details>
@@ -154,9 +296,20 @@
         <p>Es normal con programas nuevos. Pulsa «Más información» y luego «Ejecutar de todos modos». El instalador es el original de este sitio y puedes comprobarlo con la huella SHA-256 que aparece abajo.</p></details>
     </div>
 
+    <h2>Requisitos</h2>
+    <div class="requisitos">
+      <ul>
+        <li>Windows 10 u 11 de 64 bits.</li>
+        <li>4 GB de memoria y 1 GB libre en el disco.</li>
+        <li>Navegador Google Chrome o Microsoft Edge (se usa para ver el panel y el visor).</li>
+        <li>Internet solo para las funciones en línea (YouTube, letras, IA). La Biblia, las canciones y los fondos funcionan sin internet.</li>
+      </ul>
+    </div>
+
     <p class="verificar">Para verificar que el archivo no se dañó, su huella SHA-256 es:<br /><code>5CC0A6C35D02A3522BA4B4B052440319205CBFE9A6FE2349D37433C992C4D8D3</code></p>
 
     <footer>CEFAE Proyector · Hecho por Ing. Bayron Vásquez<br />© 2026 Ing. Bayron Vásquez. Todos los derechos reservados.<br />Las versiones de la Biblia incluidas (Reina Valera 1960 y NTV) pertenecen a sus titulares de derechos de autor; el autor de este programa no tiene derechos sobre ellas.<br />Al instalarlo aceptas los términos de uso que se muestran en el instalador.<br /><a href="privacidad.html" style="color: inherit">Política de privacidad</a></footer>
   </div>
+  <a class="wa" href="https://wa.me/573225926739?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20CEFAE%20Proyector" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><b style="font-size: 22px; line-height: 1" aria-hidden="true">💬</b><span>¿Dudas? Escríbenos</span></a>
 </body>
 </html>
