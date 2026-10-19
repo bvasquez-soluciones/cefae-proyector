@@ -4,9 +4,9 @@ Sistema de proyección para iglesias: Biblia, canciones, videos, imágenes y anu
 
 ## Descargar
 
-**[Descargar para Windows](https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.2 · 124 MB · Windows 10 y 11 (64 bits)
+**[Descargar para Windows](https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.2 · 124 MB · Windows 10 y 11 (64 bits)
 
-Más información: <https://jovenesdevanguardia.github.io/cefae-proyector/> · Todas las versiones: <https://github.com/jovenesdevanguardia/cefae-proyector/releases/latest>
+Más información: <https://bvasquez-soluciones.github.io/cefae-proyector/> · Todas las versiones: <https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest>
 
 Pruébalo **gratis 30 días**, sin tarjeta. Después necesitas tu clave de licencia (se ingresa en «Ajustes»).
 
