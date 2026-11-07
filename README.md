@@ -4,7 +4,7 @@ Sistema de proyección para iglesias: Biblia, canciones, videos, imágenes y anu
 
 ## Descargar
 
-**[Descargar para Windows](https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.7 · 125 MB · Windows 10 y 11 (64 bits)
+**[Descargar para Windows](https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.8 · 124 MB · Windows 10 y 11 (64 bits)
 
 Más información: <https://bvasquez-soluciones.github.io/cefae-proyector/> · Todas las versiones: <https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest>
 
@@ -29,7 +29,7 @@ Pruébalo **gratis 30 días**, sin tarjeta. Después necesitas tu clave de licen
 La huella SHA-256 del instalador es:
 
 ```
-82CD597979626E0BC50878668090CE6AE680FA6575943E63C4AE7FD9908292D1
+0CFBCCC6AA87C27A0A3A5F3A6ADBAFA69B0E25543CF4F07B52F0E4280BB8C81F
 ```
 
 En Windows: `certutil -hashfile CEFAE-Proyector-Setup.exe SHA256`
