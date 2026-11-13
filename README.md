@@ -4,7 +4,7 @@ Sistema de proyección para iglesias: Biblia, canciones, videos, imágenes y anu
 
 ## Descargar
 
-**[Descargar para Windows](https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.13 · 132 MB · Windows 10 y 11 (64 bits)
+**[Descargar para Windows](https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe)** · versión 1.0.14 · 132 MB · Windows 10 y 11 (64 bits)
 
 Más información: <https://bvasquez-soluciones.github.io/cefae-proyector/> · Todas las versiones: <https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest>
 
@@ -29,10 +29,12 @@ Pruébalo **gratis 30 días**, sin tarjeta. Después necesitas tu clave de licen
 La huella SHA-256 del instalador es:
 
 ```
-14A5612B269A24AFADF81E20F990A471EEE3D2398FB7E272B0ED4B41D164C172
+785D7A83DB4C693145448B146778CBC47AD2AADFF66E3B61AF305E43AC0FDB13
 ```
 
 En Windows: `certutil -hashfile CEFAE-Proyector-Setup.exe SHA256`
+
+Fotografías de los fondos «Oración al amanecer» (Aaron Burden) y «Mano levantada» (Priscilla Du Preez), de [Unsplash](https://unsplash.com).
 
 ---
 Hecho por Ing. Bayron Vásquez. © 2026 Ing. Bayron Vásquez. Todos los derechos reservados.
