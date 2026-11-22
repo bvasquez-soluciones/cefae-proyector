@@ -4,23 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CEFAE Proyector — Proyección para iglesias en Windows</title>
-  <meta name="description" content="Proyecta la Biblia, canciones con letra, videos y anuncios en tu iglesia, y contrólalo desde el celular. Pruébalo gratis 30 días." />
+  <meta name="description" content="Proyecta la Biblia, canciones con letra, videos y anuncios en tu iglesia, y contrólalo desde el celular. La IA sincroniza la letra de YouTube y lee tus cancioneros. Pruébalo gratis 30 días." />
   <meta property="og:title" content="CEFAE Proyector — Proyección para iglesias" />
-  <meta property="og:description" content="Biblia, canciones con letra, videos y anuncios en tu televisor o videobeam. Control desde el celular. Pruébalo gratis 30 días." />
+  <meta property="og:description" content="Biblia, canciones con letra, videos y anuncios en tu televisor o videobeam. Control desde el celular e inteligencia artificial para tus letras. Pruébalo gratis 30 días." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#060a14" />
   <link rel="icon" href="logo.png" />
   <style>
+    @font-face { font-family: "Poppins"; font-weight: 400; font-display: swap; src: url("fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Poppins"; font-weight: 700; font-display: swap; src: url("fonts/poppins-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "DM Sans"; font-weight: 400; font-display: swap; src: url("fonts/dm-sans-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "DM Sans"; font-weight: 500; font-display: swap; src: url("fonts/dm-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Space Grotesk"; font-weight: 500; font-display: swap; src: url("fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Space Grotesk"; font-weight: 700; font-display: swap; src: url("fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "JetBrains Mono"; font-weight: 500; font-display: swap; src: url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
     :root {
       --bg: #060a14; --bg2: #0a1224; --card: rgba(15, 24, 46, .72); --border: rgba(130, 190, 255, .16);
       --text-1: #f0f7ff; --text-2: #b9cbe0; --text-3: #7f97b6;
-      --accent: #3ec5ff; --gold: #ffe14a; --gold2: #ffb938; --ok: #34e3b0;
+      --accent: #3ec5ff; --gold: #ffe14a; --gold2: #ffb938; --ok: #34e3b0; --no: #ff8a9a;
     }
     * { box-sizing: border-box; margin: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     body {
       color: var(--text-2); line-height: 1.65; overflow-x: hidden;
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      font-family: "DM Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
       background: radial-gradient(1000px 560px at 8% -6%, rgba(41, 182, 246, .22), transparent 62%),
                   radial-gradient(900px 640px at 108% 4%, rgba(122, 92, 255, .18), transparent 60%), var(--bg);
     }
@@ -40,19 +48,19 @@
 
     /* botones */
     a.boton {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; border-radius: 14px;
-      text-decoration: none; font-size: 18px; font-weight: 700; color: #04121f;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 30px; border-radius: 14px;
+      text-decoration: none; font-size: 17.5px; font-weight: 700; color: #04121f;
       background: linear-gradient(135deg, var(--gold), var(--gold2)); box-shadow: 0 10px 34px rgba(255, 200, 60, .28);
       transition: transform .15s ease, box-shadow .15s ease;
     }
     a.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 42px rgba(255, 200, 60, .4); }
-    a.boton svg { width: 22px; height: 22px; }
+    a.boton svg { width: 22px; height: 22px; flex: none; }
     a.boton.chico { padding: 10px 20px; font-size: 15px; border-radius: 11px; box-shadow: none; }
     a.boton.claro { color: var(--text-1); background: transparent; border: 1px solid var(--border); box-shadow: none; }
     a.boton.claro:hover { border-color: var(--accent); box-shadow: none; }
 
     /* portada */
-    .portada { padding: 56px 0 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
+    .portada { padding: 56px 0 34px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
     .etiqueta { display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--gold);
                 border: 1px solid rgba(255, 225, 74, .35); background: rgba(255, 225, 74, .07); }
     h1 { margin-top: 18px; font-size: clamp(34px, 5.4vw, 56px); line-height: 1.08; color: var(--text-1); letter-spacing: -.02em; }
@@ -64,7 +72,7 @@
     .confianza li { font-size: 14px; color: var(--text-2); }
     .confianza li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 8px; }
     .aviso {
-      margin: 20px 0 0; max-width: 560px; padding: 12px 16px; border-radius: 12px; font-size: 13.5px;
+      margin: 16px 0 0; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; text-align: left;
       color: #ffe3a6; background: rgba(255, 190, 70, .08); border: 1px solid rgba(255, 190, 70, .32);
     }
     .aviso b { color: #fff1cf; }
@@ -73,9 +81,8 @@
     .escena { position: relative; padding-bottom: 96px; }
     .tele { border-radius: 14px; overflow: hidden; border: 6px solid #141c30; box-shadow: 0 30px 70px rgba(0, 0, 0, .55), 0 0 60px rgba(62, 197, 255, .15); background: #000; }
     .tele img { width: 100%; }
-    .flota { position: absolute; right: -10px; bottom: 0; width: 50%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
+    .flota { position: absolute; right: -10px; bottom: 0; width: 56%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
              box-shadow: 0 20px 50px rgba(0, 0, 0, .6); }
-    .pie-tele { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--text-3); }
 
     /* cifras */
     .cifras { margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
@@ -83,21 +90,43 @@
     .cifra b { display: block; font-size: 26px; color: var(--gold); line-height: 1.2; }
     .cifra span { font-size: 13.5px; color: var(--text-2); }
 
-    h2 { margin: 74px 0 14px; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; color: var(--text-1); text-align: center; letter-spacing: -.01em; }
-    .sub { max-width: 640px; margin: 0 auto 30px; text-align: center; font-size: 16.5px; }
+    h2 { margin: 80px 0 14px; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; color: var(--text-1); text-align: center; letter-spacing: -.01em; }
+    .sub { max-width: 680px; margin: 0 auto 30px; text-align: center; font-size: 16.5px; }
+    .kicker { display: block; margin-bottom: 8px; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+
+    /* por qué */
+    .razones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .razon { padding: 24px; border-radius: 18px; border: 1px solid var(--border); background: var(--card); }
+    .razon .ico { font-size: 28px; line-height: 1; margin-bottom: 12px; }
+    .razon h3 { font-size: 17.5px; color: var(--text-1); margin-bottom: 6px; }
+    .razon p { font-size: 14.5px; }
 
     /* bloques con imagen */
-    .bloque { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center; margin: 40px 0; }
-    .bloque.invertido { grid-template-columns: 1.1fr 1fr; }
+    .bloque { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; margin: 64px 0; }
+    .bloque.invertido { grid-template-columns: 1.15fr 1fr; }
     .bloque.invertido .texto { order: 2; }
-    .bloque h3 { font-size: clamp(22px, 3vw, 28px); color: var(--text-1); line-height: 1.2; margin-bottom: 12px; }
+    .bloque .mini { display: inline-block; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
+                    color: #04121f; background: linear-gradient(135deg, var(--accent), #8f7bff); }
+    .bloque h3 { font-size: clamp(22px, 3vw, 29px); color: var(--text-1); line-height: 1.2; margin-bottom: 12px; }
     .bloque ul { list-style: none; padding: 0; margin-top: 14px; }
-    .bloque li { margin: 8px 0; font-size: 15.5px; }
+    .bloque li { margin: 9px 0; font-size: 15.5px; }
     .bloque li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 10px; }
+    .nota-bloque { font-size: 13px; color: var(--text-3); border-left: 3px solid var(--accent); padding-left: 12px; margin-top: 14px; }
     .ventana { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
-    .telefono { width: min(270px, 70%); margin: 0 auto; border-radius: 34px; padding: 9px; background: #121a2e; border: 1px solid var(--border);
+    .ampliable { cursor: zoom-in; transition: transform .2s ease, box-shadow .2s ease; }
+    .ampliable:hover { transform: translateY(-3px); box-shadow: 0 30px 70px rgba(0, 0, 0, .6), 0 0 40px rgba(62, 197, 255, .14); }
+    .telefonos { display: flex; gap: 16px; justify-content: center; align-items: flex-start; }
+    .telefono { width: min(210px, 42%); border-radius: 30px; padding: 8px; background: #121a2e; border: 1px solid var(--border);
                 box-shadow: 0 28px 60px rgba(0, 0, 0, .55), 0 0 50px rgba(122, 92, 255, .18); }
-    .telefono img { border-radius: 26px; }
+    .telefono:nth-child(2) { margin-top: 36px; }
+    .telefono img { border-radius: 23px; }
+
+    /* galería de estilos de letra */
+    .estilos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .estilo { margin: 0; }
+    .estilo .ventana { border-radius: 12px; }
+    .estilo figcaption { margin-top: 10px; text-align: center; font-size: 14px; }
+    .estilo figcaption b { color: var(--text-1); }
 
     /* funciones */
     .cuadricula { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
@@ -106,6 +135,21 @@
     .tarjeta h3 { font-size: 17px; color: var(--text-1); margin-bottom: 6px; }
     .tarjeta h3 span { margin-right: 8px; }
     .tarjeta p { font-size: 14.5px; }
+    .tarjeta .nuevo { margin-left: 8px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; color: #04121f; background: var(--ok); vertical-align: middle; }
+
+    /* comparativa */
+    .tabla-envoltura { overflow-x: auto; border-radius: 18px; border: 1px solid var(--border); background: var(--card); }
+    table.comparativa { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14.5px; }
+    .comparativa th, .comparativa td { padding: 13px 14px; text-align: center; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .comparativa thead th { font-size: 15px; color: var(--text-1); background: rgba(10, 18, 36, .9); position: sticky; top: 0; }
+    .comparativa tbody th { text-align: left; font-weight: 600; color: var(--text-1); width: 27%; }
+    .comparativa tbody th small { display: block; margin-top: 2px; font-weight: 400; font-size: 12.5px; color: var(--text-3); }
+    .comparativa tr:last-child th, .comparativa tr:last-child td { border-bottom: 0; }
+    .comparativa .nosotros { background: rgba(62, 197, 255, .08); border-left: 1px solid rgba(62, 197, 255, .35); border-right: 1px solid rgba(62, 197, 255, .35); color: var(--text-1); font-weight: 600; }
+    .comparativa thead .nosotros { background: linear-gradient(180deg, rgba(62, 197, 255, .3), rgba(62, 197, 255, .12)); }
+    .si { color: var(--ok); font-weight: 800; font-size: 17px; }
+    .nada { color: var(--text-3); }
+    .nota-tabla { max-width: 820px; margin: 14px auto 0; text-align: center; font-size: 12.5px; color: var(--text-3); }
 
     /* pasos */
     ol.pasos { list-style: none; counter-reset: p; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; padding: 0; }
@@ -114,6 +158,18 @@
     ol.pasos li::before { content: counter(p); position: absolute; left: 20px; top: 20px; width: 34px; height: 34px; border-radius: 50%;
                           display: flex; align-items: center; justify-content: center; font-weight: 800; color: #04121f; background: var(--accent); }
     ol.pasos b { color: var(--text-1); }
+
+    /* descargas */
+    .descargas { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; align-items: stretch; }
+    .descarga { position: relative; padding: 30px 28px; border-radius: 22px; border: 1px solid var(--border); background: var(--card); display: flex; flex-direction: column; }
+    .descarga.principal { border-color: rgba(255, 225, 74, .45); background: linear-gradient(180deg, rgba(255, 225, 74, .07), var(--card)); }
+    .descarga .insignia { position: absolute; top: -13px; left: 26px; padding: 4px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: #04121f; background: var(--gold); }
+    .descarga h3 { font-size: 21px; color: var(--text-1); margin-bottom: 6px; }
+    .descarga ul { list-style: none; padding: 0; margin: 14px 0 22px; }
+    .descarga li { margin: 8px 0; font-size: 15px; }
+    .descarga li::before { content: "✓"; color: var(--ok); font-weight: 800; margin-right: 10px; }
+    .descarga .boton { margin-top: auto; align-self: flex-start; }
+    .descarga .datos { margin-top: 12px; }
 
     /* precio */
     .precio { max-width: 660px; margin: 0 auto; padding: 36px 32px; border-radius: 24px; text-align: center; position: relative;
@@ -145,6 +201,11 @@
     .verificar code { color: var(--text-2); }
     footer { margin-top: 44px; padding: 20px 0 90px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--text-3); }
 
+    /* imagen ampliada */
+    dialog.lupa { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+    dialog.lupa::backdrop { background: rgba(2, 5, 12, .88); }
+    dialog.lupa img { max-width: 96vw; max-height: 92vh; border-radius: 12px; cursor: zoom-out; box-shadow: 0 30px 90px rgba(0, 0, 0, .7); }
+
     /* botón flotante de WhatsApp */
     .wa { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px;
           border-radius: 999px; background: #25d366; color: #04210f; font-weight: 700; font-size: 15px; text-decoration: none;
@@ -153,26 +214,274 @@
 
     @media (max-width: 860px) {
       .portada { grid-template-columns: 1fr; padding-top: 34px; gap: 30px; }
-      .bloque, .bloque.invertido { grid-template-columns: 1fr; gap: 24px; }
+      .bloque, .bloque.invertido { grid-template-columns: 1fr; gap: 24px; margin: 48px 0; }
       .bloque.invertido .texto { order: 0; }
+      .descargas { grid-template-columns: 1fr; }
+      .estilos { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .barra nav a.enlace { display: none; }
-      .flota { right: 0; width: 52%; }
+      .flota { right: 0; width: 56%; }
       .wa span { display: none; }
       .wa { padding: 13px; }
+      a.boton { width: 100%; }
+      a.boton.chico { width: auto; }
+      .descarga .boton { align-self: stretch; }
     }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+
+    /* —— segunda pasada de diseño —— */
+    h1, h2, h3, .cifra b, .monto, .marca { font-family: "Poppins", "DM Sans", "Segoe UI", system-ui, sans-serif; }
+    h1 { font-weight: 700; }
+    h2 { font-weight: 700; }
+    .anuncio { background: linear-gradient(90deg, #1b2c63, #3a1f78 55%, #1b2c63); color: #e9f1ff; text-align: center; font-size: 14px; padding: 9px 16px; }
+    .anuncio a { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .55); margin-left: 6px; white-space: nowrap; }
+    .anuncio b { color: var(--gold); }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+                   background-image: radial-gradient(rgba(130, 190, 255, .12) 1px, transparent 1px); background-size: 28px 28px;
+                   -webkit-mask-image: linear-gradient(180deg, #000, transparent 70%); mask-image: linear-gradient(180deg, #000, transparent 70%); }
+    .portada { padding: 64px 0 40px; grid-template-columns: 1fr 1.24fr; gap: 30px; }
+    .escenario { position: relative; aspect-ratio: 1.22 / 1; }
+    .escenario::before { content: ""; position: absolute; inset: 8% 4% 4% 10%; background: radial-gradient(closest-side, rgba(122, 92, 255, .35), rgba(62, 197, 255, .12) 60%, transparent 75%); filter: blur(30px); z-index: 0; }
+    .monitor { position: absolute; z-index: 1; top: 0; right: 0; width: 93%; }
+    .monitor .marco { border: 9px solid #121a2e; border-bottom-width: 12px; border-radius: 14px; overflow: hidden; background: #000;
+                      box-shadow: 0 34px 80px rgba(0, 0, 0, .6), 0 0 0 1px rgba(130, 190, 255, .18); }
+    .monitor .marco img { width: 100%; }
+    .monitor .pie { width: 22%; height: 22px; margin: 0 auto; background: linear-gradient(#1a2440, #0d1424); clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
+    .monitor .base { width: 34%; height: 7px; margin: 0 auto; border-radius: 8px; background: #1a2440; }
+    .tv { position: absolute; z-index: 2; left: -3%; bottom: 7%; width: 60%; border: 6px solid #0f1628; border-radius: 10px; overflow: hidden; background: #000;
+          box-shadow: 0 30px 70px rgba(0, 0, 0, .7), 0 0 0 1px rgba(130, 190, 255, .2), 0 0 70px rgba(255, 185, 56, .22); }
+    .tv img { width: 100%; }
+    .cel { position: absolute; z-index: 3; right: 0; bottom: -2%; width: 21%; border-radius: 26px; padding: 6px; background: #0f1628;
+           border: 1px solid rgba(130, 190, 255, .28); box-shadow: 0 30px 60px rgba(0, 0, 0, .7), 0 0 50px rgba(122, 92, 255, .3); }
+    .cel img { border-radius: 20px; }
+    .escenario .etq { position: absolute; z-index: 4; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #04121f;
+                      background: linear-gradient(135deg, var(--gold), var(--gold2)); box-shadow: 0 6px 18px rgba(0, 0, 0, .4); }
+    .escenario .etq.tele { left: 2%; bottom: 3%; }
+    .escenario .etq.celu { right: 1%; top: 41%; background: linear-gradient(135deg, var(--accent), #8f7bff); }
+
+    .cifras { margin-top: 34px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    .cifra { padding: 22px 12px; background: linear-gradient(180deg, rgba(62, 197, 255, .07), var(--card)); }
+    .cifra b { font-size: 34px; letter-spacing: -.02em; }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.listo { opacity: 1; transform: none; }
+
+    /* biblioteca de contenido */
+    .filtros { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 22px; }
+    .filtros button { font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; padding: 8px 18px; border-radius: 999px; color: var(--text-2);
+                      background: var(--card); border: 1px solid var(--border); transition: all .15s ease; }
+    .filtros button:hover { border-color: var(--accent); color: var(--text-1); }
+    .filtros button[aria-pressed="true"] { color: #04121f; background: var(--accent); border-color: var(--accent); font-weight: 700; }
+    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .galeria .pieza { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid var(--border);
+                      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .galeria .pieza:hover { transform: translateY(-4px) scale(1.02); border-color: rgba(62, 197, 255, .55); box-shadow: 0 22px 50px rgba(0, 0, 0, .6); z-index: 2; }
+    .galeria .pieza[hidden] { display: none; }
+    .galeria video, .galeria img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .galeria .tipo { position: absolute; left: 8px; bottom: 8px; padding: 3px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 700; color: #fff; background: rgba(0, 0, 0, .72); }
+    .nota-galeria { margin-top: 20px; text-align: center; font-size: 15px; }
+    .nota-galeria b { color: var(--text-1); }
+
+    .barra .marca { font-size: 17px; }
+    .barra nav a.enlace { font-weight: 500; }
+    h2 { margin-top: 96px; }
+    .bloque { margin: 84px 0; }
+    .bloque .ventana { box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 90px rgba(62, 197, 255, .08); }
+    .bloque h3 { font-weight: 700; }
+    @media (max-width: 860px) {
+      .portada { grid-template-columns: 1fr; padding-top: 30px; }
+      .escenario { max-width: 560px; margin: 0 auto; width: 100%; }
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+      .cel { width: 24%; }
+      .bloque { margin: 56px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* —— tercera pasada: estilo futurista (interfaz de mando) —— */
+    @property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+    :root {
+      --violeta: #8f7bff; --magenta: #ff5fd2; --linea: rgba(62, 197, 255, .34);
+      --mono: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      --disp: "Space Grotesk", "Poppins", "DM Sans", "Segoe UI", system-ui, sans-serif;
+      /* esquinas de «visor»: arriba a la izquierda y abajo a la derecha */
+      --esq: linear-gradient(var(--accent), var(--accent)) 0 0 / 18px 2px no-repeat,
+             linear-gradient(var(--accent), var(--accent)) 0 0 / 2px 18px no-repeat,
+             linear-gradient(var(--violeta), var(--violeta)) 100% 100% / 18px 2px no-repeat,
+             linear-gradient(var(--violeta), var(--violeta)) 100% 100% / 2px 18px no-repeat;
+      /* luz que sigue al cursor dentro de cada tarjeta */
+      --foco: radial-gradient(280px circle at var(--mx, 50%) var(--my, -40%), rgba(62, 197, 255, .17), transparent 65%);
+    }
+    h1, h2, h3, .cifra b, .monto, .marca { font-family: var(--disp); }
+    body { counter-reset: sec;
+           background: radial-gradient(1000px 560px at 8% -6%, rgba(41, 182, 246, .2), transparent 62%),
+                       radial-gradient(900px 640px at 108% 4%, rgba(143, 123, 255, .22), transparent 60%),
+                       radial-gradient(800px 520px at 50% 118%, rgba(255, 95, 210, .08), transparent 60%), var(--bg); }
+
+    /* capas de fondo: red de puntos, suelo en perspectiva, luz del cursor, líneas de pantalla */
+    #red { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .85; }
+    .halo { position: fixed; left: 0; top: 0; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; z-index: -1; pointer-events: none;
+            background: radial-gradient(closest-side, rgba(62, 197, 255, .12), rgba(143, 123, 255, .05) 55%, transparent 72%); opacity: 0; transition: opacity .5s; }
+    .halo.on { opacity: 1; }
+    .suelo { position: absolute; left: 0; right: 0; top: 560px; height: 520px; z-index: -1; pointer-events: none; overflow: hidden; perspective: 540px;
+             -webkit-mask-image: linear-gradient(180deg, transparent, #000 32%, transparent); mask-image: linear-gradient(180deg, transparent, #000 32%, transparent); }
+    .suelo::before { content: ""; position: absolute; left: -60%; right: -60%; top: 0; bottom: -50%; transform: rotateX(63deg); transform-origin: 50% 0;
+                     background-image: linear-gradient(rgba(62, 197, 255, .38) 1px, transparent 1px), linear-gradient(90deg, rgba(143, 123, 255, .34) 1px, transparent 1px);
+                     background-size: 58px 58px; animation: avanza 5.5s linear infinite; }
+    @keyframes avanza { to { background-position: 0 58px; } }
+    body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none;
+                  background: repeating-linear-gradient(0deg, rgba(120, 180, 255, .022) 0 1px, transparent 1px 3px); }
+    .progreso { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 95; transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+                background: linear-gradient(90deg, var(--accent), var(--violeta), var(--magenta)); box-shadow: 0 0 14px rgba(62, 197, 255, .85); }
+
+    /* cabecera y aviso */
+    .anuncio { font-family: var(--mono); font-size: 12.5px; letter-spacing: .02em; background: linear-gradient(90deg, #0b1740, #2b1670 50%, #0b1740);
+               border-bottom: 1px solid rgba(143, 123, 255, .4); }
+    .anuncio b::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--ok);
+                         box-shadow: 0 0 10px var(--ok); animation: pulso 1.6s ease-in-out infinite; vertical-align: 1px; }
+    @keyframes pulso { 50% { opacity: .2; } }
+    .barra { background: rgba(6, 10, 20, .7); border-bottom: 0; }
+    .barra::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+                    background: linear-gradient(90deg, transparent, var(--linea) 20%, rgba(143, 123, 255, .55) 62%, transparent); }
+    .barra nav a.enlace { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    .barra nav a.enlace::before { content: "//"; margin-right: 6px; color: var(--accent); opacity: .6; }
+    .barra nav a.enlace:hover { color: #fff; text-shadow: 0 0 14px rgba(62, 197, 255, .9); }
+
+    /* portada */
+    .etiqueta { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; border-radius: 4px; padding: 7px 12px;
+                color: var(--accent); border: 1px solid var(--linea); background: rgba(62, 197, 255, .06); }
+    .etiqueta::before { content: ">"; margin-right: 8px; color: var(--gold); }
+    .etiqueta::after { content: ""; display: inline-block; width: 7px; height: 13px; margin-left: 7px; vertical-align: -2px; background: var(--accent); animation: cursor 1s steps(1) infinite; }
+    @keyframes cursor { 50% { opacity: 0; } }
+    h1 { font-size: clamp(32px, 4.4vw, 49px); letter-spacing: -.03em; line-height: 1.1; }
+    h1 em { display: block; white-space: nowrap; min-height: 1.15em;
+            background: linear-gradient(100deg, var(--accent), var(--violeta) 55%, var(--magenta)); -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: drop-shadow(0 0 22px rgba(62, 197, 255, .35)); }
+    .lema { color: var(--text-2); }
+    a.boton { position: relative; overflow: hidden; border-radius: 10px; font-family: var(--disp); letter-spacing: .01em; }
+    a.boton::after { content: ""; position: absolute; top: 0; left: -70%; width: 40%; height: 100%; transform: skewX(-20deg); pointer-events: none;
+                     background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent); transition: left .7s ease; }
+    a.boton:hover::after { left: 130%; }
+    a.boton:not(.claro) { animation: brillo 3.2s ease-in-out infinite; }
+    @keyframes brillo { 50% { box-shadow: 0 10px 42px rgba(255, 200, 60, .5), 0 0 0 1px rgba(255, 225, 74, .35); } }
+    a.boton.claro { border-color: var(--linea); background: rgba(62, 197, 255, .06); }
+    a.boton.claro:hover { box-shadow: 0 0 30px rgba(62, 197, 255, .28); }
+    .datos { font-family: var(--mono); font-size: 12px; letter-spacing: .03em; }
+    .confianza li { font-family: var(--mono); font-size: 12.5px; }
+
+    /* escena en 3D que sigue al cursor */
+    .escenario { perspective: 1500px; transform-style: preserve-3d; }
+    .monitor { transform: rotateY(calc(var(--px, 0) * 6deg)) rotateX(calc(var(--py, 0) * -5deg)); will-change: transform; }
+    .tv { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 40px) rotateY(calc(var(--px, 0) * 9deg)); will-change: transform; }
+    .cel { transform: translate3d(calc(var(--px, 0) * -24px), calc(var(--py, 0) * -14px), 80px) rotateY(calc(var(--px, 0) * 12deg)); will-change: transform; }
+    .monitor::before, .monitor::after { content: ""; position: absolute; width: 36px; height: 36px; pointer-events: none; border: 2px solid var(--accent); filter: drop-shadow(0 0 7px rgba(62, 197, 255, .9)); }
+    .monitor::before { left: -12px; top: -12px; border-right: 0; border-bottom: 0; }
+    .monitor::after { right: -12px; bottom: 34px; border-left: 0; border-top: 0; border-color: var(--violeta); filter: drop-shadow(0 0 7px rgba(143, 123, 255, .9)); }
+    .escenario .etq { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; border-radius: 4px; }
+
+    /* cinta de funciones */
+    .cinta { margin: 40px 0 0; overflow: hidden; white-space: nowrap; border-block: 1px solid var(--border); background: rgba(10, 18, 36, .5);
+             -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+    .cinta-pista { display: inline-flex; padding: 12px 0; animation: cinta 52s linear infinite; }
+    .cinta:hover .cinta-pista { animation-play-state: paused; }
+    .cinta span { font-family: var(--mono); font-size: 12px; letter-spacing: .22em; color: var(--text-2); padding-left: 44px; }
+    .cinta span::before { content: "◆"; margin-right: 44px; color: var(--accent); opacity: .75; }
+    @keyframes cinta { to { transform: translateX(-50%); } }
+
+    /* cifras y títulos de sección numerados */
+    .cifra { position: relative; background: var(--foco), var(--esq), var(--card); }
+    .cifra b { font-family: var(--mono); font-weight: 500; text-shadow: 0 0 24px rgba(255, 200, 60, .5); }
+    .cifra span { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
+    h2 { counter-increment: sec; letter-spacing: -.02em; }
+    h2::before { content: "[ " counter(sec, decimal-leading-zero) " ]"; display: block; margin-bottom: 12px; font: 500 12.5px/1 var(--mono); letter-spacing: .34em; color: var(--accent); }
+    h2::after { content: ""; display: block; width: 90px; height: 2px; margin: 18px auto 0; background: linear-gradient(90deg, transparent, var(--accent), var(--violeta), transparent); }
+
+    /* tarjetas con luz y esquinas */
+    .tarjeta, .razon, .descarga, .requisitos, .autor { position: relative; background: var(--foco), var(--esq), var(--card); }
+    .tarjeta:hover, .razon:hover { border-color: rgba(62, 197, 255, .5); box-shadow: 0 0 34px rgba(62, 197, 255, .1); }
+    .tarjeta h3 span:first-child { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 10px; border-radius: 8px; font-size: 17px;
+                                   background: rgba(62, 197, 255, .09); border: 1px solid var(--linea); }
+    .razon .ico { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 12px; font-size: 26px; background: rgba(62, 197, 255, .09); border: 1px solid var(--linea);
+                  box-shadow: 0 0 26px rgba(62, 197, 255, .14); }
+    .tarjeta .nuevo { font-family: var(--mono); border-radius: 4px; letter-spacing: .08em; }
+
+    /* ventanas con barra de título */
+    .ventana { position: relative; padding-top: 28px; background: #0a1224; }
+    .ventana::before { content: attr(data-t); position: absolute; left: 0; right: 0; top: 0; height: 28px; padding-left: 64px; z-index: 2;
+                       font: 500 10.5px/28px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--text-3);
+                       background: radial-gradient(circle at 16px 14px, #3ec5ff 4px, transparent 5px), radial-gradient(circle at 32px 14px, #8f7bff 4px, transparent 5px),
+                                   radial-gradient(circle at 48px 14px, #ff5fd2 4px, transparent 5px), #0c1630; border-bottom: 1px solid var(--border); }
+    .ventana::after { content: ""; position: absolute; inset: 28px 0 0; z-index: 2; pointer-events: none; background: var(--esq); opacity: .9; }
+    .bloque .mini { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; }
+    .telefono { box-shadow: 0 28px 60px rgba(0, 0, 0, .55), 0 0 60px rgba(143, 123, 255, .26); }
+
+    /* galería */
+    .galeria .pieza::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--esq); opacity: 0; transition: opacity .2s; }
+    .galeria .pieza:hover::after { opacity: 1; }
+    .galeria .tipo { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; border-radius: 3px; border-left: 2px solid var(--accent); }
+    .filtros button { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; border-radius: 4px; }
+
+    /* comparativa, pasos, preguntas */
+    .comparativa thead th { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .comparativa .nosotros { box-shadow: inset 0 0 40px rgba(62, 197, 255, .06); }
+    ol.pasos li::before { content: counter(p, decimal-leading-zero); width: 42px; height: 30px; border-radius: 4px; font-family: var(--mono); font-weight: 500;
+                          color: var(--accent); background: rgba(62, 197, 255, .08); border: 1px solid var(--linea); }
+    ol.pasos li { padding-left: 80px; }
+    .preguntas summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+    .preguntas summary::-webkit-details-marker { display: none; }
+    .preguntas summary::after { content: "+"; font: 500 20px/1 var(--mono); color: var(--accent); }
+    .preguntas details[open] summary::after { content: "−"; }
+    .preguntas details[open] { border-color: rgba(62, 197, 255, .5); box-shadow: 0 0 34px rgba(62, 197, 255, .08); }
+
+    /* descarga y precio con borde de luz giratorio */
+    .descarga.principal { border: 1px solid transparent; animation: gira 7s linear infinite;
+      background: var(--foco) padding-box, linear-gradient(var(--bg2), var(--bg2)) padding-box,
+                  conic-gradient(from var(--ang), var(--accent), var(--violeta), var(--magenta), var(--gold), var(--accent)) border-box; }
+    .precio { border: 1px solid transparent; animation: gira 8s linear infinite;
+      background: var(--foco) padding-box, linear-gradient(var(--bg2), var(--bg2)) padding-box,
+                  conic-gradient(from var(--ang), var(--gold), #ff9d3d, var(--magenta), var(--gold)) border-box; box-shadow: 0 20px 70px rgba(0, 0, 0, .4), 0 0 70px rgba(255, 200, 60, .08); }
+    @keyframes gira { to { --ang: 360deg; } }
+    .descarga .insignia, .precio .insignia { font-family: var(--mono); letter-spacing: .1em; text-transform: uppercase; border-radius: 4px; }
+    .precio .monto { text-shadow: 0 0 30px rgba(255, 200, 60, .45); }
+    .verificar, footer { font-family: var(--mono); font-size: 11.5px; }
+
+    /* entrada escalonada de los hijos de cada bloque */
+    @keyframes entra { from { opacity: 0; transform: translateY(20px) scale(.985); } }
+    .reveal.listo > * { animation: entra .65s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+
+    @media (hover: none) { .halo { display: none; } }
+    @media (max-width: 860px) {
+      .suelo { display: none; }
+      .escenario, .monitor, .tv, .cel { perspective: none; }
+      .ventana::before { padding-left: 56px; }
+      ol.pasos li { padding-left: 74px; }
+      .cinta span { font-size: 11px; }
+      .barra .marca { white-space: nowrap; font-size: 15px; }
+      .barra .marca img { width: 32px; height: 32px; }
+      .barra a.boton.chico { white-space: nowrap; padding: 9px 14px; font-size: 13.5px; }
+      .etiqueta { font-size: 10.5px; letter-spacing: .05em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #red, .halo, .suelo { display: none; }
+      .cinta-pista, .descarga.principal, .precio, a.boton:not(.claro), .anuncio b::before, .etiqueta::after { animation: none; }
+      .reveal.listo > * { animation: none; }
+      .monitor, .tv, .cel { transform: none; }
+    }
   </style>
 </head>
 <body>
+  <canvas id="red" aria-hidden="true"></canvas>
+  <div class="halo" id="halo" aria-hidden="true"></div>
+  <div class="progreso" id="progreso" aria-hidden="true"></div>
+  <div class="suelo" aria-hidden="true"></div>
+  <div class="anuncio"><b>Nuevo:</b> graba la prédica y la deja limpia en MP3, y la IA sincroniza la letra de YouTube con la música<a href="#funciones">Ver qué más incluye →</a></div>
   <header class="barra">
     <div class="envoltura">
       <a class="marca" href="#"><img src="logo.png" alt="" />CEFAE Proyector</a>
       <nav>
         <a class="enlace" href="#funciones">Funciones</a>
-        <a class="enlace" href="#como-se-ve">Cómo se ve</a>
+        <a class="enlace" href="#comparativa">Comparativa</a>
         <a class="enlace" href="#precio">Precio</a>
         <a class="enlace" href="#preguntas">Preguntas</a>
-        <a class="boton chico" href="https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>Descargar gratis</a>
+        <a class="boton chico" href="#descargar">Descargar gratis</a>
       </nav>
     </div>
   </header>
@@ -181,83 +490,255 @@
     <section class="portada">
       <div>
         <span class="etiqueta">Hecho para iglesias de habla hispana</span>
-        <h1>Proyecta tu culto <em>sin complicaciones</em></h1>
-        <p class="lema">Biblia, canciones con su letra, videos, imágenes y anuncios en tu televisor o videobeam. Y lo controlas desde el celular, sin salir de tu lugar.</p>
+        <h1>Proyecta tu culto <em><span class="rota" data-frases="sin complicaciones|con IA que ayuda|desde tu celular|sin internet">sin complicaciones</span></em></h1>
+        <p class="lema">Biblia, canciones con su letra, videos, imágenes y anuncios en tu televisor o videobeam. Lo controlas desde el celular, y la inteligencia artificial sincroniza las letras de YouTube y lee tus cancioneros por ti.</p>
         <div class="acciones">
-          <a class="boton" href="https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>
+          <a class="boton" href="#descargar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
             Descargar para Windows
           </a>
-          <a class="boton claro" href="#precio">Ver precio</a>
+          <a class="boton claro" href="#funciones">Ver qué incluye</a>
         </div>
-        <div class="datos">Versión 1.0.18 · 192 MB · Windows 10 y 11 (64 bits) · 16 de noviembre de 2026</div>
+        <div class="datos">Versión 1.0.19 · Windows 10 y 11 (64 bits) · 22 de noviembre de 2026</div>
         <ul class="confianza">
           <li>Gratis 30 días, sin tarjeta</li>
           <li>Funciona sin internet</li>
           <li>Tus datos quedan en tu equipo</li>
         </ul>
-      <div class="aviso"><b>Si Windows muestra «Windows protegió su PC»:</b> pulsa <b>«Más información»</b> y luego <b>«Ejecutar de todos modos»</b>. Es normal con programas nuevos; el instalador es el original de este sitio.</div>
-
       </div>
-      <div class="escena">
-        <div class="tele"><img src="img/visor.jpg" width="1920" height="1080" alt="Versículo proyectado a pantalla completa sobre un fondo animado" /></div>
-        <div class="flota"><img src="img/panel.jpg" width="1440" height="810" alt="Panel de control con la Biblia" loading="lazy" /></div>
+      <div class="escenario">
+        <div class="monitor"><div class="marco"><img src="img/panel-letras.jpg" width="1366" height="768" alt="Panel de control con la lista de canciones y sus estrofas" /></div><div class="pie"></div><div class="base"></div></div>
+        <div class="tv"><img src="img/visor.jpg" width="1366" height="768" alt="Letra de una canción proyectada en dorado sobre un fondo animado" /></div>
+        <div class="cel"><img src="img/celular.jpg" width="390" height="844" alt="Control remoto en el celular" /></div>
+        <span class="etq tele">En la pantalla</span>
+        <span class="etq celu">En tu mano</span>
       </div>
     </section>
 
-    <div class="cifras">
-      <div class="cifra"><b>70</b><span>canciones incluidas</span></div>
-      <div class="cifra"><b>2</b><span>versiones de la Biblia</span></div>
-      <div class="cifra"><b>20+</b><span>fondos en movimiento</span></div>
-      <div class="cifra"><b>Auto</b><span>letra de YouTube sincronizada</span></div>
-      <div class="cifra"><b>QR</b><span>control desde tu celular</span></div>
+    <div class="cinta" aria-hidden="true"><div class="cinta-pista">
+      <span>Biblia</span><span>Canciones</span><span>Letra de YouTube con IA</span><span>Importar desde foto</span><span>Prédicas en MP3</span><span>Fondos animados</span><span>Diseñador</span><span>Control desde el celular</span><span>Transmitir en vivo</span><span>Funciona sin internet</span>
+      <span>Biblia</span><span>Canciones</span><span>Letra de YouTube con IA</span><span>Importar desde foto</span><span>Prédicas en MP3</span><span>Fondos animados</span><span>Diseñador</span><span>Control desde el celular</span><span>Transmitir en vivo</span><span>Funciona sin internet</span>
+    </div></div>
+
+    <div class="cifras reveal">
+      <div class="cifra"><b data-n="51">51</b><span>fondos de video Full HD</span></div>
+      <div class="cifra"><b data-n="51">51</b><span>fondos animados de adoración</span></div>
+      <div class="cifra"><b data-n="31">31</b><span>títulos animados para el culto</span></div>
+      <div class="cifra"><b data-n="36">36</b><span>plantillas para diseñar</span></div>
+      <div class="cifra"><b data-n="90" data-mas="1">90+</b><span>canciones incluidas</span></div>
+      <div class="cifra"><b>IA</b><span>letras de YouTube y fotos</span></div>
+    </div>
+
+    <h2>Pensado para el equipo de tu iglesia</h2>
+    <p class="sub">Un programa que cualquier voluntario aprende en una tarde, hecho aquí en español y atendido por su propio autor.</p>
+    <div class="razones reveal">
+      <div class="razon"><div class="ico">🙌</div><h3>Fácil para voluntarios</h3><p>Todo está en español y a un clic: Biblia, letras, anuncios y videos en un solo panel, sin manuales de cien páginas.</p></div>
+      <div class="razon"><div class="ico">🤖</div><h3>Con inteligencia artificial útil</h3><p>La IA pone en hora la letra de un video, escribe la que no existe y lee canciones desde una foto. Tú solo revisas.</p></div>
+      <div class="razon"><div class="ico">🔌</div><h3>Funciona sin internet</h3><p>La Biblia, las canciones y los fondos están en tu equipo. Si el internet falla en pleno culto, la proyección sigue.</p></div>
+      <div class="razon"><div class="ico">💬</div><h3>Te atiende su autor</h3><p>Escribes por WhatsApp y te responde una persona, en tu idioma, que conoce el programa por dentro.</p></div>
     </div>
 
     <h2 id="como-se-ve">Así se ve por dentro</h2>
-    <p class="sub">Un panel claro para el equipo de multimedia, y una pantalla limpia para la congregación.</p>
+    <p class="sub">Un panel claro para el equipo de multimedia, y una pantalla limpia y elegante para la congregación. Toca cualquier imagen para verla en grande.</p>
 
-    <div class="bloque">
+    <div class="bloque reveal">
       <div class="texto">
+        <span class="mini">Biblia y canciones</span>
         <h3>Todo el culto en un solo panel</h3>
         <p>Cambia de la Biblia a una canción, un video o un anuncio sin abrir otros programas. Lo que ves en la vista previa es lo que aparece en la pantalla.</p>
         <ul>
-          <li>Busca por libro y capítulo, o escribe una frase y la encuentra</li>
+          <li>Biblia con buscador por libro y capítulo, por frase o por tema</li>
+          <li>Más de 90 canciones listas; agrega las tuyas o búscalas en internet</li>
           <li>Texto que se agranda solo para llenar la pantalla</li>
-          <li>Fondos animados, brillo y márgenes para cualquier televisor</li>
+          <li>Orden del culto, macros y horarios para que el domingo todo salga solo</li>
         </ul>
       </div>
-      <div class="ventana"><img src="img/panel.jpg" width="1440" height="810" alt="Panel de control de CEFAE Proyector con la Biblia abierta" loading="lazy" /></div>
+      <div class="ventana ampliable" data-t="Panel · Biblia"><img src="img/panel-biblia.jpg" width="1366" height="768" alt="Panel de CEFAE Proyector con la Biblia abierta" loading="lazy" /></div>
     </div>
 
-    <div class="bloque invertido">
-      <div class="telefono"><img src="img/celular.jpg" width="390" height="844" alt="Control remoto en un celular: anterior, siguiente, limpiar pantalla y brillo" loading="lazy" /></div>
+    <div class="bloque invertido reveal">
+      <div class="ventana ampliable" data-t="IA · Importar canciones"><img src="img/importar.jpg" width="1366" height="768" alt="Ventana para importar canciones desde una foto o un PDF" loading="lazy" /></div>
       <div class="texto">
+        <span class="mini">Inteligencia artificial</span>
+        <h3>La IA trabaja con tus canciones</h3>
+        <p>Menos tiempo copiando letras y moviendo tiempos. La IA hace el trabajo pesado y tú das el visto bueno antes de proyectar.</p>
+        <ul>
+          <li><b>YouTube con letra:</b> busca la canción y la letra se proyecta sola, al ritmo de la música</li>
+          <li><b>Sin letra en internet:</b> la IA la escribe escuchando el video</li>
+          <li><b>Desde una foto o un PDF:</b> toma una foto a tu cancionero y las canciones se agregan sin acordes</li>
+          <li>Usa tu propia cuenta gratuita de Google; no pagas por la IA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bloque reveal">
+      <div class="texto">
+        <span class="mini">Diseño</span>
+        <h3>Diapositivas y fondos que lucen</h3>
+        <p>Crea tus propias presentaciones sin PowerPoint: bienvenidas, versículos, avisos, cumpleaños, ofrendas, Santa Cena y más.</p>
+        <ul>
+          <li>36 plantillas y 8 temas, con transiciones y modo Presentar</li>
+          <li>Más de 110 fondos: 51 videos Full HD (seda, vitrales, mármol, luces, auroras…), animados de adoración y degradados</li>
+          <li>Tercio inferior con el nombre y el cargo de quien habla</li>
+          <li>Versículos y letras animados, y cuenta regresiva con fondo</li>
+        </ul>
+      </div>
+      <div class="ventana ampliable" data-t="Diseñador"><img src="img/disenador.jpg" width="1366" height="768" alt="Plantillas del Diseñador: bienvenida, versículo, ofrendas, Santa Cena y más" loading="lazy" /></div>
+    </div>
+
+    <div class="bloque invertido reveal">
+      <div class="telefonos">
+        <div class="telefono ampliable"><img src="img/celular.jpg" width="390" height="844" alt="Control remoto en el celular con los botones de la proyección" loading="lazy" /></div>
+        <div class="telefono ampliable"><img src="img/celular-letras.jpg" width="390" height="844" alt="Lista de canciones en el celular" loading="lazy" /></div>
+      </div>
+      <div class="texto">
+        <span class="mini">Control remoto</span>
         <h3>Contrólalo desde tu celular</h3>
-        <p>Escanea un código QR y listo: avanza versículos y estrofas, pon una canción, un anuncio o un video de YouTube desde donde estés en el templo.</p>
+        <p>Escanea un código QR y listo: avanza versículos y estrofas, pon una canción, un anuncio o un video desde donde estés en el templo.</p>
         <ul>
           <li>Protegido con un PIN de 6 dígitos</li>
           <li>Funciona por tu Wi-Fi, sin instalar nada en el teléfono</li>
-          <li>Busca canciones de YouTube y proyecta su letra al ritmo de la música</li>
+          <li>Casi todo lo del panel, también desde el celular</li>
+          <li>Macros: un toque inicia o cierra el culto completo</li>
         </ul>
       </div>
     </div>
 
+        <div class="bloque reveal">
+      <div class="texto">
+        <span class="mini">Prédicas</span>
+        <h3>Graba la prédica y la deja limpia en MP3</h3>
+        <p>Elige el micrófono y pulsa grabar. Al terminar, el programa quita el ruido, baja lo que suena más bajo que el predicador y te entrega un MP3 parejo, listo para compartir.</p>
+        <ul>
+          <li><b>Quita el ruido de fondo:</b> ventiladores, zumbidos y estática</li>
+          <li><b>Baja las voces lejanas</b> (conversaciones, tos, eco de la sala) cuando el predicador habla cerca del micrófono</li>
+          <li>Volumen parejo, a un nivel estándar de voz, y guardado en MP3</li>
+          <li>Escucha el resultado junto al original y vuelve a limpiar con más o menos fuerza; el original no se pierde</li>
+          <li>También limpia un audio que ya tengas grabado</li>
+        </ul>
+        <p class="nota-bloque">Funciona mejor con el micrófono cerca del predicador. No puede separar a dos personas que hablan a la vez con el mismo volumen.</p>
+      </div>
+      <div class="ventana ampliable" data-t="Prédicas · MP3"><img src="img/predicas.jpg" width="1366" height="980" alt="Módulo Prédicas grabando, con el medidor del micrófono y la lista de prédicas ya limpias en MP3" loading="lazy" /></div>
+    </div>
+
+<h2 id="biblioteca">Contenido listo para usar</h2>
+    <p class="sub">Títulos de culto, fechas especiales y fondos animados que ya vienen en el programa: eliges uno y se proyecta, sin buscar ni descargar nada. Pasa el cursor sobre cualquiera.</p>
+    <div class="filtros" role="group" aria-label="Filtrar el contenido">
+      <button type="button" data-f="todo" aria-pressed="true">Todo</button>
+      <button type="button" data-f="titulos" aria-pressed="false">Títulos de culto</button>
+      <button type="button" data-f="fechas" aria-pressed="false">Fechas especiales</button>
+      <button type="button" data-f="fondos" aria-pressed="false">Fondos</button>
+    </div>
+    <div class="galeria reveal" id="galeria">
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/bienvenidos.jpg"><source src="media/bienvenidos.mp4" type="video/mp4" /></video><span class="tipo">Bienvenidos</span></div>
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/oracion.jpg"><source src="media/oracion.mp4" type="video/mp4" /></video><span class="tipo">Oración</span></div>
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/alabanza.jpg"><source src="media/alabanza.mp4" type="video/mp4" /></video><span class="tipo">Alabanza</span></div>
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/ofrendas.jpg"><source src="media/ofrendas.mp4" type="video/mp4" /></video><span class="tipo">Ofrendas</span></div>
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/santa-cena.jpg"><source src="media/santa-cena.mp4" type="video/mp4" /></video><span class="tipo">Santa Cena</span></div>
+      <div class="pieza" data-c="titulos"><video muted loop playsinline preload="none" poster="media/gracias.jpg"><source src="media/gracias.mp4" type="video/mp4" /></video><span class="tipo">Gracias por venir</span></div>
+      <div class="pieza" data-c="fechas"><video muted loop playsinline preload="none" poster="media/navidad.jpg"><source src="media/navidad.mp4" type="video/mp4" /></video><span class="tipo">Navidad</span></div>
+      <div class="pieza" data-c="fechas"><video muted loop playsinline preload="none" poster="media/resurreccion.jpg"><source src="media/resurreccion.mp4" type="video/mp4" /></video><span class="tipo">Resurrección</span></div>
+      <div class="pieza" data-c="fechas"><video muted loop playsinline preload="none" poster="media/cumpleanos.jpg"><source src="media/cumpleanos.mp4" type="video/mp4" /></video><span class="tipo">Cumpleaños</span></div>
+      <div class="pieza" data-c="fechas"><video muted loop playsinline preload="none" poster="media/madre.jpg"><source src="media/madre.mp4" type="video/mp4" /></video><span class="tipo">Día de la madre</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/aurora-dorada.jpg"><source src="media/aurora-dorada.mp4" type="video/mp4" /></video><span class="tipo">Aurora dorada</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/nebulosa-violeta.jpg"><source src="media/nebulosa-violeta.mp4" type="video/mp4" /></video><span class="tipo">Nebulosa violeta</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/cruz-dorada.jpg"><source src="media/cruz-dorada.mp4" type="video/mp4" /></video><span class="tipo">Cruz dorada</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/aurora-azul.jpg"><source src="media/aurora-azul.mp4" type="video/mp4" /></video><span class="tipo">Aurora azul</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/rayos-violeta.jpg"><source src="media/rayos-violeta.mp4" type="video/mp4" /></video><span class="tipo">Rayos de luz</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/velas.jpg"><source src="media/velas.mp4" type="video/mp4" /></video><span class="tipo">Luces y velas</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/seda-violeta.jpg"><source src="media/seda-violeta.mp4" type="video/mp4" /></video><span class="tipo">Seda violeta</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/vitral-joya.jpg"><source src="media/vitral-joya.mp4" type="video/mp4" /></video><span class="tipo">Vitral joya</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/luces-ambar.jpg"><source src="media/luces-ambar.mp4" type="video/mp4" /></video><span class="tipo">Luces ámbar</span></div>
+      <div class="pieza" data-c="fondos"><video muted loop playsinline preload="none" poster="media/marmol-oro.jpg"><source src="media/marmol-oro.mp4" type="video/mp4" /></video><span class="tipo">Mármol negro y oro</span></div>
+    </div>
+    <p class="nota-galeria">Estos son <b>20 de los más de 140</b> que trae el programa. Todo va incluido en tu licencia, y puedes agregar los tuyos.</p>
+
+    <h2 id="estilos">Letras con estilo</h2>
+    <p class="sub">Elige cómo se ve cada canción: cinco estilos listos, con palabra destacada, brillo o contorno. Estos son algunos.</p>
+    <div class="estilos reveal">
+      <figure class="estilo"><div class="ventana ampliable" data-t="Visor · Dorado"><img src="img/visor-dorado.jpg" width="800" height="450" alt="Letra en estilo dorado sobre fondo de aurora" loading="lazy" /></div><figcaption><b>Dorado</b> · «Cuán grande es Dios»</figcaption></figure>
+      <figure class="estilo"><div class="ventana ampliable" data-t="Visor · Contorno"><img src="img/visor-contorno.jpg" width="800" height="450" alt="Letra en estilo contorno sobre una cruz al atardecer" loading="lazy" /></div><figcaption><b>Contorno</b> · «Sublime gracia»</figcaption></figure>
+      <figure class="estilo"><div class="ventana ampliable" data-t="Visor · Neón"><img src="img/visor-neon.jpg" width="800" height="450" alt="Letra en estilo neón con brillo azul" loading="lazy" /></div><figcaption><b>Neón</b> · «Santo por siempre»</figcaption></figure>
+    </div>
+
     <h2 id="funciones">Todo lo que incluye</h2>
-    <div class="cuadricula">
-      <div class="tarjeta"><h3><span>📖</span>Biblia</h3><p>Dos versiones incluidas (RVR60 y NTV). Busca por libro y capítulo, o escribe una frase y la encuentra.</p></div>
-      <div class="tarjeta"><h3><span>🎵</span>Canciones</h3><p>70 canciones incluidas. Agrega las tuyas, busca letras en internet y proyéctalas estrofa por estrofa.</p></div>
-      <div class="tarjeta"><h3><span>▶️</span>YouTube con letra</h3><p>Busca una canción por su nombre y la letra se proyecta sola, al ritmo de la música. Si no existe, la IA la sincroniza.</p></div>
-      <div class="tarjeta"><h3><span>🎬</span>Videos e imágenes</h3><p>Sube tus videos y carteles, o pega un enlace de YouTube, y proyéctalos a pantalla completa.</p></div>
-      <div class="tarjeta"><h3><span>🎨</span>Fondos</h3><p>Más de 20 videos de fondo en movimiento y colores, listos para usar detrás del texto.</p></div>
-      <div class="tarjeta"><h3><span>📢</span>Anuncios</h3><p>Avisos que se muestran sobre cualquier pantalla, con tu estilo.</p></div>
+    <div class="cuadricula reveal">
+      <div class="tarjeta"><h3><span>📖</span>Biblia</h3><p>Dos versiones incluidas (RVR60 y NTV). Busca por libro, por frase o por tema, y subraya o marca versículos.</p></div>
+      <div class="tarjeta"><h3><span>🎵</span>Canciones</h3><p>Más de 90 canciones incluidas. Agrega las tuyas, búscalas en internet y proyéctalas estrofa por estrofa.</p></div>
+      <div class="tarjeta"><h3><span>▶️</span>YouTube con letra</h3><p>La letra se proyecta sola, al ritmo de la música. La IA la sincroniza, o la escribe si no existe.</p></div>
+      <div class="tarjeta"><h3><span>📷</span>Importar desde foto <span class="nuevo">NUEVO</span></h3><p>Fotografía tu cancionero o sube un PDF: la IA lee las canciones y tú las revisas antes de agregarlas.</p></div>
+      <div class="tarjeta"><h3><span>🎨</span>Diseñador</h3><p>36 plantillas para tus avisos, versículos y bienvenidas, con fondos animados y modo Presentar.</p></div>
+      <div class="tarjeta"><h3><span>🎙️</span>Prédicas en MP3 <span class="nuevo">NUEVO</span></h3><p>Graba la prédica y el programa la deja limpia: sin ruido de fondo, con el volumen parejo y guardada en MP3.</p></div>
+      <div class="tarjeta"><h3><span>🎬</span>Videos e imágenes</h3><p>Sube tus videos y carteles, o pega un enlace de YouTube, y proyéctalos con transiciones suaves.</p></div>
+      <div class="tarjeta"><h3><span>✨</span>Fondos animados</h3><p>Más de 100 fondos en movimiento: seda, vitrales, mármol, luces, auroras, fogata, cruz en la colina… ordenados por colecciones.</p></div>
+      <div class="tarjeta"><h3><span>📢</span>Anuncios y tercio inferior</h3><p>Avisos sobre cualquier pantalla y una franja animada con el nombre de quien habla.</p></div>
+      <div class="tarjeta"><h3><span>⚡</span>Macros y horarios</h3><p>Programa «Iniciar el culto» o «Cerrar el culto»: una secuencia de pasos con un toque o a la hora que elijas.</p></div>
+      <div class="tarjeta"><h3><span>📱</span>Control desde el celular</h3><p>Por Wi-Fi y con PIN. Cambia versículos, canciones, anuncios y fondos desde cualquier lugar del templo.</p></div>
+      <div class="tarjeta"><h3><span>🔴</span>Transmitir en vivo</h3><p>Escenas, cámara y mezclador de audio para emitir tu culto a Facebook o YouTube desde el mismo programa.</p></div>
       <div class="tarjeta"><h3><span>🖥️</span>Cualquier pantalla</h3><p>Televisores, videobeams y pantallas LED de cualquier forma. Con dos pantallas, el visor sale directo en la otra.</p></div>
-      <div class="tarjeta"><h3><span>⛪</span>Con tu iglesia</h3><p>Pon tu logo y el nombre de tu iglesia. Tus datos quedan solo en tu equipo.</p></div>
+      <div class="tarjeta"><h3><span>⛪</span>Con tu iglesia</h3><p>Pon tu logo y el nombre de tu iglesia. Copia de seguridad en un solo archivo. Tus datos son solo tuyos.</p></div>
+      <div class="tarjeta"><h3><span>⏱️</span>Temporizador y orden del culto</h3><p>Cuenta regresiva con fondo animado y el orden del culto para pasar de un punto al siguiente.</p></div>
+    </div>
+
+    <h2 id="comparativa">Cómo se compara</h2>
+    <p class="sub">Hay buenos programas de proyección. Esto es lo que ofrece cada uno según su sitio oficial, y dónde CEFAE Proyector marca la diferencia.</p>
+    <div class="tabla-envoltura">
+      <table class="comparativa">
+        <thead>
+          <tr><th></th><th class="nosotros">CEFAE Proyector</th><th>ProPresenter</th><th>EasyWorship</th><th>FreeShow</th><th>OpenLP</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Precio</th><td class="nosotros">COP 149.000 por iglesia<br /><small>Licencia, sin suscripción mensual</small></td><td>Suscripción desde US$ 289/año</td><td>Suscripción desde US$ 17,50/mes (pago anual)</td><td>Gratis</td><td>Gratis</td></tr>
+          <tr><th>Prueba gratuita</th><td class="nosotros">30 días, sin tarjeta</td><td>14 días</td><td>30 días</td><td class="nada">Siempre gratis</td><td class="nada">Siempre gratis</td></tr>
+          <tr><th>Control desde el celular<small>Sin instalar una aplicación</small></th><td class="nosotros"><span class="si">✓</span> QR y PIN</td><td><span class="si">✓</span> Con su app Remote</td><td class="nada">—</td><td><span class="si">✓</span></td><td><span class="si">✓</span></td></tr>
+          <tr><th>Letra de YouTube sincronizada con IA<small>Se proyecta sola, al ritmo del video</small></th><td class="nosotros"><span class="si">✓</span></td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td></tr>
+          <tr><th>Importar canciones desde foto o PDF con IA</th><td class="nosotros"><span class="si">✓</span></td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td></tr>
+          <tr><th>La IA escribe la letra escuchando la canción</th><td class="nosotros"><span class="si">✓</span></td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td><td class="nada">—</td></tr>
+          <tr><th>Transmisión en vivo con cámara y audio<small>Dentro del mismo programa</small></th><td class="nosotros"><span class="si">✓</span> Escenas y mezclador</td><td class="nada">—</td><td>Por NDI u OBS</td><td>Por NDI</td><td class="nada">—</td></tr>
+          <tr><th>Sistemas</th><td class="nosotros">Solo Windows</td><td>Windows y Mac</td><td>Windows y Mac</td><td>Windows, Mac y Linux</td><td>Windows, Mac y Linux</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="nota-tabla">«—» significa que no aparece en el sitio oficial del programa. Datos tomados de los sitios de cada uno el 16 de noviembre de 2026; los precios son de lista y pueden cambiar. Si algo está desactualizado, escríbenos y lo corregimos. Los nombres pertenecen a sus dueños y no hay relación con ellos.</p>
+
+    <h2 id="descargar">Descarga CEFAE Proyector</h2>
+    <p class="sub">Dos formas de instalarlo, con el mismo programa y las mismas funciones. Pruébalo 30 días gratis, sin tarjeta.</p>
+    <div class="descargas">
+      <div class="descarga principal">
+        <div class="insignia">Recomendada</div>
+        <h3>Microsoft Store</h3>
+        <p>La forma más sencilla y segura de instalarlo.</p>
+        <ul>
+          <li>Firmada por Microsoft: Windows no muestra advertencias</li>
+          <li>Se actualiza sola, sin que tengas que descargar nada</li>
+          <li>Instalar y desinstalar con un clic, como cualquier app</li>
+        </ul>
+        <a class="boton" href="https://apps.microsoft.com/detail/9NFPM4B4D2C5" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          Obtener en la Microsoft Store
+        </a>
+        <div class="datos">Se abre la ficha de CEFAE Proyector en la Store</div>
+      </div>
+      <div class="descarga">
+        <h3>Instalador directo (.exe)</h3>
+        <p>Para equipos sin acceso a la Store.</p>
+        <ul>
+          <li>Versión 1.0.19 · 220 MB · 22 de noviembre de 2026</li>
+          <li>Se instala solo para tu usuario y crea el icono en el escritorio</li>
+          <li>La actualización la ofrece el mismo programa</li>
+        </ul>
+        <a class="boton claro" href="https://github.com/bvasquez-soluciones/cefae-proyector/releases/latest/download/CEFAE-Proyector-Setup.exe" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          Descargar instalador
+        </a>
+      <div class="aviso"><b>Si Windows muestra «Windows protegió su PC»:</b> pulsa <b>«Más información»</b> y luego <b>«Ejecutar de todos modos»</b>. Es normal con programas nuevos; el instalador es el original de este sitio.</div>
+      </div>
     </div>
 
     <h2>Empieza en 3 pasos</h2>
     <ol class="pasos">
-      <li><b>Descarga</b> el instalador con el botón de arriba.</li>
-      <li><b>Ábrelo</b> y sigue los pasos. Se instala solo para tu usuario y crea el icono en el escritorio.</li>
+      <li><b>Instálalo</b> desde la Microsoft Store o con el instalador directo.</li>
+      <li><b>Ábrelo</b> y pon el nombre y el logo de tu iglesia. La lista de «Primeros pasos» te guía.</li>
       <li><b>Úsalo 30 días gratis.</b> Después, ingresa tu clave de licencia en «Ajustes».</li>
     </ol>
 
@@ -291,11 +772,21 @@
       <details><summary>¿Cómo recibo la clave?</summary>
         <p>Después de tu pago te enviamos tu clave. La pegas en «Ajustes» y el programa queda activado, sin necesidad de internet.</p></details>
       <details><summary>¿Necesito internet para usarlo en el culto?</summary>
-        <p>No. La Biblia, las canciones y los fondos funcionan sin internet. Solo lo necesitan YouTube con letra, la búsqueda de letras y la sincronización con IA.</p></details>
+        <p>No. La Biblia, las canciones y los fondos funcionan sin internet. Solo lo necesitan YouTube con letra, la búsqueda de letras, la IA y la transmisión en vivo. Para grabar prédicas y transmitir se baja una sola vez un componente de audio y video (FFmpeg), y después también funciona sin internet.</p></details>
+      <details><summary>¿La grabación de la prédica quita las voces de otras personas?</summary>
+        <p>Quita el ruido de fondo y baja las voces y los sonidos que se oyen más bajo que el predicador, porque hablan más lejos del micrófono: conversaciones, tos, eco de la sala. Entre más cerca esté el micrófono del predicador, mejor queda. No puede separar a dos personas que hablan a la vez con el mismo volumen. Siempre conservas el original, por si prefieres limpiar con más o menos fuerza.</p></details>
+      <details><summary>¿Cuánto cuesta la inteligencia artificial?</summary>
+        <p>No cobramos nada extra. Las funciones con IA usan tu propia cuenta gratuita de Google: creas una clave en Google AI Studio y la pegas en «Ajustes». El plan gratuito de Google tiene un límite diario de consultas.</p></details>
       <details><summary>¿Puedo controlarlo desde el celular?</summary>
         <p>Sí. Escaneas un código QR con el teléfono (en la misma red Wi-Fi) y desde ahí cambias versículos, canciones y videos.</p></details>
+      <details><summary>¿Puedo traer las canciones que ya tengo?</summary>
+        <p>Sí. Puedes pegarlas, buscarlas en internet o fotografiar tu cancionero (o subir un PDF) y la IA las agrega para que las revises.</p></details>
+      <details><summary>¿Funciona en Mac o en Linux?</summary>
+        <p>Por ahora solo en Windows 10 y 11 de 64 bits.</p></details>
+      <details><summary>¿Instalo desde la Store o con el instalador?</summary>
+        <p>Si puedes, desde la Microsoft Store: está firmada por Microsoft y se actualiza sola. El instalador directo es el mismo programa para equipos sin acceso a la Store.</p></details>
       <details><summary>Windows dice «protegió su PC» al instalar</summary>
-        <p>Es normal con programas nuevos. Pulsa «Más información» y luego «Ejecutar de todos modos». El instalador es el original de este sitio y puedes comprobarlo con la huella SHA-256 que aparece abajo.</p></details>
+        <p>Solo pasa con el instalador directo, que aún no tiene firma de Microsoft. Pulsa «Más información» y luego «Ejecutar de todos modos». Si tu equipo no lo permite, instala la versión de la Microsoft Store. Puedes comprobar el archivo con la huella SHA-256 que aparece abajo.</p></details>
     </div>
 
     <h2>Requisitos</h2>
@@ -304,14 +795,169 @@
         <li>Windows 10 u 11 de 64 bits.</li>
         <li>4 GB de memoria y 1 GB libre en el disco.</li>
         <li>Navegador Google Chrome o Microsoft Edge (se usa para ver el panel y el visor).</li>
-        <li>Internet solo para las funciones en línea (YouTube, letras, IA). La Biblia, las canciones y los fondos funcionan sin internet.</li>
+        <li>Internet solo para las funciones en línea (YouTube, letras, IA, transmisión) y para bajar una vez el componente de audio y video de «En vivo» y «Prédicas». La Biblia, las canciones y los fondos funcionan sin internet.</li>
       </ul>
     </div>
 
-    <p class="verificar">Para verificar que el archivo no se dañó, su huella SHA-256 es:<br /><code>84828F41E7BA22B3ABDE5CDD0ADD0BE0885F94CC50ECDD5C00BD94439203444E</code></p>
+    <p class="verificar">Para verificar que el instalador directo no se dañó, su huella SHA-256 es:<br /><code>9846B10F075FD184D4C5283B8369CAB4625E396F3107030E4AEBC2DA8325ACE5</code></p>
 
     <footer>CEFAE Proyector · Hecho por Ing. Bayron Vásquez<br />© 2026 Ing. Bayron Vásquez. Todos los derechos reservados.<br />Las versiones de la Biblia incluidas (Reina Valera 1960 y NTV) pertenecen a sus titulares de derechos de autor; el autor de este programa no tiene derechos sobre ellas.<br />Al instalarlo aceptas los términos de uso que se muestran en el instalador.<br /><a href="privacidad.html" style="color: inherit">Política de privacidad</a></footer>
   </div>
+
+  <dialog class="lupa" id="lupa"><img alt="" /></dialog>
+  <script>
+    (function () {
+      var reducido = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      /* imagen ampliada */
+      var d = document.getElementById("lupa"), g = d.querySelector("img");
+      if (d.showModal) {
+        document.querySelectorAll(".ampliable img").forEach(function (i) {
+          i.addEventListener("click", function () { g.src = i.currentSrc || i.src; g.alt = i.alt; d.showModal(); });
+        });
+        d.addEventListener("click", function () { d.close(); });
+      }
+      /* aparecer al desplazarse */
+      var rev = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window && !reducido) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("listo"); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        rev.forEach(function (e) { io.observe(e); });
+      } else { rev.forEach(function (e) { e.classList.add("listo"); }); }
+      /* cifras que cuentan */
+      var cif = document.querySelectorAll(".cifra b[data-n]");
+      if ("IntersectionObserver" in window && !reducido) {
+        var co = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            co.unobserve(e.target);
+            var n = +e.target.dataset.n, mas = e.target.dataset.mas ? "+" : "", t0 = performance.now();
+            (function paso(t) {
+              var k = Math.min(1, (t - t0) / 1100), v = Math.round(n * (1 - Math.pow(1 - k, 3)));
+              e.target.textContent = v + (k === 1 ? mas : "");
+              if (k < 1) requestAnimationFrame(paso);
+            })(t0);
+          });
+        }, { threshold: 0.6 });
+        cif.forEach(function (e) { e.textContent = "0"; co.observe(e); });
+      }
+      /* galería: filtros y videos que solo corren mientras se ven */
+      var piezas = [].slice.call(document.querySelectorAll("#galeria .pieza"));
+      document.querySelectorAll(".filtros button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.querySelectorAll(".filtros button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          piezas.forEach(function (p) { p.hidden = b.dataset.f !== "todo" && p.dataset.c !== b.dataset.f; });
+        });
+      });
+      if ("IntersectionObserver" in window && !reducido) {
+        var vo = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            var v = e.target.querySelector("video");
+            if (!v) return;
+            if (e.isIntersecting) { var r = v.play(); if (r && r.catch) r.catch(function () {}); } else { v.pause(); }
+          });
+        }, { threshold: 0.5 });
+        piezas.forEach(function (p) { vo.observe(p); });
+      }
+
+      /* —— estilo futurista —— */
+      var tactil = window.matchMedia && matchMedia("(hover: none)").matches;
+      /* entrada escalonada: cada hijo de un bloque recibe su turno */
+      document.querySelectorAll(".reveal").forEach(function (c) {
+        [].slice.call(c.children).forEach(function (h, i) { h.style.setProperty("--i", Math.min(i, 12)); });
+      });
+      /* barra de avance de lectura */
+      var avance = document.getElementById("progreso");
+      function medirAvance() {
+        var h = document.documentElement.scrollHeight - innerHeight;
+        avance.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")";
+      }
+      addEventListener("scroll", medirAvance, { passive: true }); medirAvance();
+      /* luz que sigue al cursor dentro de las tarjetas */
+      document.addEventListener("pointermove", function (e) {
+        var el = e.target.closest && e.target.closest(".tarjeta,.razon,.cifra,.descarga,.precio,.pieza");
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      }, { passive: true });
+      /* titular que se descifra y cambia de frase */
+      var rota = document.querySelector(".rota");
+      if (rota && !reducido) {
+        var frases = rota.dataset.frases.split("|"), k = 0, abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*<>/";
+        var cambiar = function () {
+          if (document.hidden) { setTimeout(cambiar, 1500); return; }
+          k = (k + 1) % frases.length;
+          var meta = frases[k], t0 = performance.now(), dur = 900;
+          (function paso(t) {
+            var f = Math.min(1, (t - t0) / dur), fijo = Math.floor(meta.length * f), s = "";
+            for (var i = 0; i < meta.length; i++) s += (i < fijo || meta[i] === " ") ? meta[i] : abc.charAt(Math.floor(Math.random() * abc.length));
+            rota.textContent = s;
+            if (f < 1) requestAnimationFrame(paso); else setTimeout(cambiar, 3400);
+          })(t0);
+        };
+        setTimeout(cambiar, 3400);
+      }
+      /* red de puntos del fondo, escena en 3D y luz del cursor, en un solo ciclo de dibujo */
+      var cv = document.getElementById("red"), halo = document.getElementById("halo"), esc = document.querySelector(".escenario");
+      var puntos = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 1.5), mx = -9999, my = -9999;
+      var px = 0, py = 0, objx = 0, objy = 0, ultimo = 0, g = (cv && cv.getContext) ? cv.getContext("2d") : null;
+      function medir() {
+        if (!g) return;
+        W = cv.width = Math.round(innerWidth * dpr); H = cv.height = Math.round(innerHeight * dpr);
+        var n = Math.round(Math.min(tactil ? 24 : 60, innerWidth * innerHeight / 22000));
+        puntos = [];
+        for (var i = 0; i < n; i++) puntos.push({
+          x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .34 * dpr, vy: (Math.random() - .5) * .34 * dpr,
+          r: (Math.random() * 1.2 + .6) * dpr, oro: Math.random() < .16
+        });
+      }
+      addEventListener("pointermove", function (e) {
+        mx = e.clientX * dpr; my = e.clientY * dpr; ultimo = performance.now();
+        objx = (e.clientX / innerWidth - .5) * 2; objy = (e.clientY / innerHeight - .5) * 2;
+        if (halo && !tactil) { halo.classList.add("on"); halo.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)"; }
+      }, { passive: true });
+      document.addEventListener("pointerleave", function () { mx = my = -9999; if (halo) halo.classList.remove("on"); });
+      if (!reducido) {
+        if (g) { medir(); addEventListener("resize", medir); }
+        (function ciclo(t) {
+          requestAnimationFrame(ciclo);
+          if (document.hidden) return;
+          /* escena de la portada: sigue al cursor y, sin cursor, flota sola */
+          if (esc && scrollY < 900) {
+            var quieto = tactil || t - ultimo > 3000;
+            var ox = quieto ? Math.sin(t / 2600) * .55 : objx, oy = quieto ? Math.cos(t / 3100) * .4 : objy;
+            px += (ox - px) * .06; py += (oy - py) * .06;
+            esc.style.setProperty("--px", px.toFixed(3)); esc.style.setProperty("--py", py.toFixed(3));
+          }
+          if (!g) return;
+          g.clearRect(0, 0, W, H);
+          var lim = 150 * dpr, lim2 = lim * lim, c = puntos.length, i, j, p, q, dx, dy, d2, a;
+          for (i = 0; i < c; i++) {
+            p = puntos[i]; p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > W) p.vx *= -1;
+            if (p.y < 0 || p.y > H) p.vy *= -1;
+            dx = p.x - mx; dy = p.y - my; d2 = dx * dx + dy * dy;
+            if (d2 < 14400 * dpr * dpr && d2 > 1) { var f = .6 / Math.sqrt(d2); p.x += dx * f; p.y += dy * f; }
+          }
+          g.lineWidth = dpr;
+          for (i = 0; i < c; i++) {
+            p = puntos[i];
+            for (j = i + 1; j < c; j++) {
+              q = puntos[j]; dx = p.x - q.x; dy = p.y - q.y; d2 = dx * dx + dy * dy;
+              if (d2 < lim2) { a = (1 - Math.sqrt(d2) / lim) * .3; g.strokeStyle = "rgba(90,190,255," + a.toFixed(3) + ")"; g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(q.x, q.y); g.stroke(); }
+            }
+            dx = p.x - mx; dy = p.y - my; d2 = dx * dx + dy * dy;
+            if (d2 < lim2 * 1.5) { a = (1 - Math.sqrt(d2) / (lim * 1.22)) * .55; if (a > 0) { g.strokeStyle = "rgba(160,130,255," + a.toFixed(3) + ")"; g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(mx, my); g.stroke(); } }
+          }
+          for (i = 0; i < c; i++) {
+            p = puntos[i]; g.fillStyle = p.oro ? "rgba(255,215,90,.9)" : "rgba(130,205,255,.85)";
+            g.beginPath(); g.arc(p.x, p.y, p.r, 0, 6.2832); g.fill();
+          }
+        })(0);
+      }
+    })();
+  </script>
   <a class="wa" href="https://wa.me/573225926739?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20CEFAE%20Proyector" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><b style="font-size: 22px; line-height: 1" aria-hidden="true">💬</b><span>¿Dudas? Escríbenos</span></a>
 </body>
 </html>
