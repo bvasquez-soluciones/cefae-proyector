@@ -28,7 +28,7 @@
 <main>
   <p><a href="index.html">← CEFAE Proyector</a></p>
   <h1>Política de privacidad</h1>
-  <p class="fecha">CEFAE Proyector · actualizada el 22 de noviembre de 2026</p>
+  <p class="fecha">CEFAE Proyector · actualizada el 23 de noviembre de 2026</p>
 
   <div class="resumen">
     <b>En pocas palabras:</b> CEFAE Proyector funciona en tu computador. No tiene cuentas, no tiene publicidad, no mide lo que
@@ -57,13 +57,31 @@
     <li><b>Google Gemini</b> y <b>Anthropic (Claude)</b>: solo si tú configuras tu propia clave. Se usan para sincronizar la
       letra con el audio y para el asistente de búsqueda bíblica. Se envía el enlace del video y la letra, o tu consulta.
       Esas empresas tratan los datos según sus propias políticas y tu cuenta con ellas.</li>
+    <li><b>Transmisión en vivo</b> (módulo En vivo): la imagen y el sonido que compones se envían a la plataforma que tú
+      elijas (Facebook, YouTube u otra) con la clave de transmisión que tú pegas.</li>
+    <li><b>Descargas de componentes</b>, solo la primera vez que usas la función: FFmpeg (desde GitHub) para En vivo y
+      Prédicas, cloudflared (desde GitHub) para el acceso desde internet, y el modelo de voz en español (desde
+      alphacephei.com) para los subtítulos. No se envía ningún dato tuyo; cada archivo se comprueba con su huella.</li>
+    <li><b>Actualizaciones</b> (versión descargada desde la página, no la de Microsoft Store): el programa consulta en GitHub
+      si hay una versión nueva. No se envía ningún dato tuyo.</li>
   </ul>
   <p>La licencia se comprueba en tu equipo, <b>sin conectarse a internet</b>.</p>
+
+  <h2>Cámara y micrófono</h2>
+  <p>El programa usa la cámara y el micrófono <b>solo cuando tú los activas</b> y Windows o el navegador te piden permiso:</p>
+  <ul>
+    <li><b>En vivo</b>: la cámara y el micrófono que eliges para transmitir o grabar el culto. Las grabaciones se guardan
+      en tu computador (carpeta Videos\CEFAE grabaciones).</li>
+    <li><b>Prédicas</b>: el micrófono para grabar la prédica. El audio se limpia y se guarda en tu computador.</li>
+    <li><b>Subtítulos en vivo</b>: el micrófono para escribir en pantalla lo que dice el predicador. El reconocimiento de
+      voz se hace <b>dentro de tu computador, sin internet</b>: el audio no sale de tu equipo ni se guarda; solo queda la
+      transcripción en texto si tú la descargas.</li>
+  </ul>
 
   <h2>Lo que no hacemos</h2>
   <ul>
     <li>No recopilamos datos personales, ni analítica, ni informes de uso.</li>
-    <li>No usamos tu cámara, tu micrófono ni tu ubicación.</li>
+    <li>No usamos tu ubicación, y la cámara y el micrófono solo cuando tú los activas (ver arriba).</li>
     <li>No vendemos ni compartimos información, porque no la recibimos.</li>
     <li>El programa no está dirigido a niños y no pide datos de nadie.</li>
   </ul>
